@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>socket</title>
+    <head th:replace="~{@{includes/user/head}}"></head>
+</head>
+
+<body>
+<h1>Test</h1>
+
+<button onclick="connect_socket();">on</button>
+
+<body th:replace="~{@{includes/user/bottom}}"></body>
+
+<script>
+    /*
+    let remainTimeAlert = null;
+     */
+    let remainTime = 0;
+    let websocket = null;
+
+    function connect_socket(){
+        let hreforigin_for_socket = document.location.origin;
+        let hrefprotocol_for_socket = document.location.protocol;
+        let final_for_socket = "";
+
+        final_for_socket = hreforigin_for_socket.replace(hrefprotocol_for_socket, "");
+
+        let http_add_value = "";
+        if(hreforigin_for_socket.indexOf("https") == 0){
+            http_add_value = "s";
+        }
+        //alert($("#detail_tbgsquiduser_tbgsquidId").val());
+        websocket = new WebSocket("ws"+http_add_value+":"+final_for_socket+"/livews?cate=" +"tbgalone_"+ "1111");
+        alert("ws"+http_add_value+":"+final_for_socket+"/livews?cate=" +"tbgalone_"+ "1111");
+
+        websocket.onmessage = onMessage;
+        /*
+        websocket.onopen = onOpen;
+        */
+        websocket.onclose = onClose;
+    }
+    function onMessage(msg) {
+        let msg_data = JSON.parse(msg.data);
+        console.log(JSON.stringify(msg_data));
+        /*if(msg_data.ws_type + "" == "duedatetime"){
+            let duedatetime = msg_data["duedatetime"];
+            alert(duedatetime);
+        }
+        if(msg_data.ws_type + "" == "timer"){
+            remainTime = Number(msg_data["remainTime"]);
+            calculateremainTime(remainTime);
+        }
+        if(msg_data.ws_type + "" == "listSize"){
+            $(".font_current_listSize").text(msg_data["listSize"]);
+            search_tbgsquiduser();
+        }
+        if(msg_data.ws_type + "" == "next"){
+            //alert(JSON.stringify(msg_data));
+            tbgsquid_min = Number($("#input_player_content_" + getIdFromUrl(null)).val());
+            let deadList = msg_data["deadList"];
+            for(each of deadList){
+                //alert(each.id);
+                listener_player_dead(each.id);
+            }
+            let nowMin = msg_data["nowMin"];
+            let process = msg_data["process"];
+            $(".font_tbgsquid_process").text(process);
+            //alert(nowMin);
+            for(let i=1;i<Number(nowMin);i++){
+                listener_board_broken(i);
+            }
+            calculateremainTime(0);
+            let alive = msg_data["alive"] + "";
+            //alert(alive);
+            if(alive === "ing"){
+                listener_game_next();
+            } else {
+                setTimeout(function() {
+                    listener_game_over();
+                    alert("Game Over.");
+                    location.reload();
+                }, 1000);
+            }
+        }
+        if(msg_data.ws_type + "" == "selected"){
+            if($("#detail_tbgsquiduser_id").val() == msg_data["tbgsquiduserId"]){
+            } else {
+                console.log(msg_data["tbgsquiduserId"] + "//" +  msg_data["tbgsquiduserContent"]);
+                listener_player_moving_other(msg_data["tbgsquiduserId"], msg_data["tbgsquiduserContent"]);
+            }
+        }
+        if(msg_data.ws_type + "" == "rejected"){
+            alert("too many connections. try again please.");
+        }*/
+    }
+    function onClose() {
+        console.log("disconnect websocket!");
+        //listener_tbgsquid_socket();
+    }
+</script>
+
+
+</body>
+</html>

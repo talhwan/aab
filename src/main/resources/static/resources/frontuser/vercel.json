@@ -1,0 +1,14 @@
+{
+    "rewrites": [
+      { "source": "/", "destination": "/pages/homepage.html" },
+      { "source": "/homepage.html", "destination": "/pages/homepage.html" },
+      { "source": "/event.html", "destination": "/pages/event.html" },
+      { "source": "/tournaments.html", "destination": "/pages/tournaments.html" },
+      { "source": "/media.html", "destination": "/pages/media.html" },
+      { "source": "/news.html", "destination": "/pages/news.html" },
+      { "source": "/contacts.html", "destination": "/pages/contacts.html" },
+      { "source": "/login.html", "destination": "/pages/login.html" },
+      { "source": "/signup.html", "destination": "/pages/signup.html" }
+    ]
+  }
+  

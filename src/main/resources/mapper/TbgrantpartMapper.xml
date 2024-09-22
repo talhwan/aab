@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0/EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.thc.sprboot.mapper.TbgrantpartMapper">
+
+	<!---->
+	<select id="detail" parameterType="hashMap" resultType="com.thc.sprboot.dto.TbgrantpartDto$DetailResDto">
+		SELECT tbgrantpart.id
+			 ,tbgrantpart.deleted
+			 ,tbgrantpart.process
+			 ,tbgrantpart.created_at as createdAt
+			 ,tbgrantpart.modified_at as modifiedAt
+			 ,tbgrantpart.tbgrant_id as tbgrantId
+			 ,tbgrantpart.cate
+			 ,tbgrantpart.content
+		FROM tbgrantpart
+		WHERE tbgrantpart.id = #{id}
+	</select>
+	<select id="list" parameterType="hashMap" resultType="com.thc.sprboot.dto.TbgrantpartDto$DetailResDto">
+		SELECT tbgrantpart.id
+		FROM tbgrantpart
+		WHERE tbgrantpart.id is not NULL
+		<if test = "deleted != null and deleted !=''">AND tbgrantpart.deleted = #{deleted}</if>
+		<if test = "process != null and process !=''">AND tbgrantpart.process = #{process}</if>
+		<if test = "tbgrantId != null and tbgrantId !=''">AND tbgrantpart.tbgrant_id = #{tbgrantId}</if>
+		<if test = "cate != null and cate !=''">AND tbgrantpart.cate = #{cate}</if>
+		<if test = "content != null and content !=''">AND tbgrantpart.content = #{content}</if>
+		ORDER BY tbgrantpart.created_at DESC
+	</select>
+
+	<select id="scrollList" parameterType="hashMap" resultType="com.thc.sprboot.dto.TbgrantpartDto$DetailResDto">
+		SELECT tbgrantpart.id
+		FROM tbgrantpart
+		WHERE tbgrantpart.id is not NULL
+		<if test = "deleted != null and deleted !=''">AND tbgrantpart.deleted = #{deleted}</if>
+		<if test = "process != null and process !=''">AND tbgrantpart.process = #{process}</if>
+		<if test = "tbgrantId != null and tbgrantId !=''">AND tbgrantpart.tbgrant_id = #{tbgrantId}</if>
+		<if test = "cate != null and cate !=''">AND tbgrantpart.cate = #{cate}</if>
+		<if test = "content != null and content !=''">AND tbgrantpart.content = #{content}</if>
+
+		<if test = "orderby =='created_at'">
+			<if test = "orderway =='desc'">
+				<if test = "cursor != null and cursor !=''">AND STR_TO_DATE(#{cursor}, '%Y-%m-%d %H:%i:%s.%f') > tbgrantpart.created_at </if>
+				ORDER BY tbgrantpart.created_at DESC
+			</if>
+			<if test = "orderway =='asc'">
+				<if test = "cursor != null and cursor !=''">AND tbgrantpart.created_at > STR_TO_DATE(#{cursor}, '%Y-%m-%d %H:%i:%s.%f')</if>
+				ORDER BY tbgrantpart.created_at ASC
+			</if>
+		</if>
+		<if test = "orderby =='title'">
+			<if test = "orderway =='desc'">
+				<if test = "cursor != null and cursor !=''">AND #{cursor} > tbgrantpart.title</if>
+				ORDER BY tbgrantpart.title DESC
+			</if>
+			<if test = "orderway =='asc'">
+				<if test = "cursor != null and cursor !=''">AND tbgrantpart.title > #{cursor}</if>
+				ORDER BY tbgrantpart.title ASC
+			</if>
+		</if>
+		LIMIT 0, #{perpage}
+	</select>
+
+	<select id="pagedList" parameterType="hashMap" resultType="com.thc.sprboot.dto.TbgrantpartDto$DetailResDto">
+		SELECT tbgrantpart.id
+		FROM tbgrantpart
+		WHERE tbgrantpart.id is not NULL
+		<if test = "deleted != null and deleted !=''">AND tbgrantpart.deleted = #{deleted}</if>
+		<if test = "process != null and process !=''">AND tbgrantpart.process = #{process}</if>
+		<if test = "tbgrantId != null and tbgrantId !=''">AND tbgrantpart.tbgrant_id = #{tbgrantId}</if>
+		<if test = "cate != null and cate !=''">AND tbgrantpart.cate = #{cate}</if>
+		<if test = "content != null and content !=''">AND tbgrantpart.content = #{content}</if>
+
+		<if test = "orderby =='created_at'">ORDER BY tbgrantpart.created_at </if>
+		<if test = "orderby =='title'">ORDER BY tbgrantpart.title </if>
+		<if test = "orderway =='asc'">ASC</if>
+		<if test = "orderway =='desc'">DESC</if>
+		LIMIT #{offset}, #{perpage}
+	</select>
+	<select id="pagedListCount" parameterType="hashMap" resultType="Integer">
+		SELECT count(tbgrantpart.id) as listsize
+		FROM tbgrantpart
+		WHERE tbgrantpart.id is not NULL
+		<if test = "deleted != null and deleted !=''">AND tbgrantpart.deleted = #{deleted}</if>
+		<if test = "process != null and process !=''">AND tbgrantpart.process = #{process}</if>
+		<if test = "tbgrantId != null and tbgrantId !=''">AND tbgrantpart.tbgrant_id = #{tbgrantId}</if>
+		<if test = "cate != null and cate !=''">AND tbgrantpart.cate = #{cate}</if>
+		<if test = "content != null and content !=''">AND tbgrantpart.content = #{content}</if>
+	</select>
+
+</mapper>

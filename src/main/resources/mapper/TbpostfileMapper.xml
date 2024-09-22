@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0/EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.thc.sprboot.mapper.TbpostfileMapper">
+
+	<!---->
+	<select id="detail" parameterType="hashMap" resultType="com.thc.sprboot.dto.TbpostfileDto$DetailResDto">
+		SELECT tbpostfile.id
+			,tbpostfile.deleted
+			,tbpostfile.process
+			,tbpostfile.created_at as createdAt
+			,tbpostfile.modified_at as modifiedAt
+
+		    ,tbpostfile.tbpost_id as tbpostId
+			,tbpostfile.type
+			,tbpostfile.url
+
+		FROM tbpostfile
+		WHERE tbpostfile.id = #{id}
+	</select>
+	<select id="list" parameterType="hashMap" resultType="com.thc.sprboot.dto.TbpostfileDto$DetailResDto">
+		SELECT tbpostfile.id
+		FROM tbpostfile
+		WHERE tbpostfile.id is not NULL
+		<if test = "deleted != null and deleted !=''">AND tbpostfile.deleted = #{deleted}</if>
+		<if test = "tbpostId != null and tbpostId !=''">AND tbpostfile.tbpost_id = #{tbpostId}</if>
+		<if test = "type != null and type !=''">AND tbpostfile.type = #{type}</if>
+		ORDER BY tbpostfile.created_at DESC
+	</select>
+
+	<select id="scrollList" parameterType="hashMap" resultType="com.thc.sprboot.dto.TbpostfileDto$DetailResDto">
+		SELECT tbpostfile.id
+		FROM tbpostfile
+		WHERE tbpostfile.id is not NULL
+		<if test = "deleted != null and deleted !=''">AND tbpostfile.deleted = #{deleted}</if>
+		<if test = "tbpostId != null and tbpostId !=''">AND tbpostfile.tbpost_id = #{tbpostId}</if>
+		<if test = "type != null and type !=''">AND tbpostfile.type = #{type}</if>
+
+		<if test = "orderby =='created_at'">
+			<if test = "orderway =='desc'">
+				<if test = "cursor != null and cursor !=''">AND STR_TO_DATE(#{cursor}, '%Y-%m-%d %H:%i:%s.%f') > tbpostfile.created_at </if>
+				ORDER BY tbpostfile.created_at DESC
+			</if>
+			<if test = "orderway =='asc'">
+				<if test = "cursor != null and cursor !=''">AND tbpostfile.created_at > STR_TO_DATE(#{cursor}, '%Y-%m-%d %H:%i:%s.%f')</if>
+				ORDER BY tbpostfile.created_at ASC
+			</if>
+		</if>
+		<if test = "orderby =='type'">
+			<if test = "orderway =='desc'">
+				<if test = "cursor != null and cursor !=''">AND #{cursor} > tbpostfile.type</if>
+				ORDER BY tbpostfile.type DESC
+			</if>
+			<if test = "orderway =='asc'">
+				<if test = "cursor != null and cursor !=''">AND tbpostfile.type > #{cursor}</if>
+				ORDER BY tbpostfile.type ASC
+			</if>
+		</if>
+		LIMIT 0, #{perpage}
+	</select>
+
+	<select id="pagedList" parameterType="hashMap" resultType="com.thc.sprboot.dto.TbpostfileDto$DetailResDto">
+		SELECT tbpostfile.id
+		FROM tbpostfile
+		WHERE tbpostfile.id is not NULL
+		<if test = "deleted != null and deleted !=''">AND tbpostfile.deleted = #{deleted}</if>
+		<if test = "tbpostId != null and tbpostId !=''">AND tbpostfile.tbpost_id = #{tbpostId}</if>
+		<if test = "type != null and type !=''">AND tbpostfile.type = #{type}</if>
+
+		<if test = "orderby =='created_at'">ORDER BY tbpostfile.created_at </if>
+		<if test = "orderby =='type'">ORDER BY tbpostfile.type </if>
+		<if test = "orderway =='asc'">ASC</if>
+		<if test = "orderway =='desc'">DESC</if>
+		LIMIT #{offset}, #{perpage}
+	</select>
+	<select id="pagedListCount" parameterType="hashMap" resultType="Integer">
+		SELECT count(tbpostfile.id) as listsize
+		FROM tbpostfile
+		WHERE tbpostfile.id is not NULL
+		<if test = "deleted != null and deleted !=''">AND tbpostfile.deleted = #{deleted}</if>
+		<if test = "tbpostId != null and tbpostId !=''">AND tbpostfile.tbpost_id = #{tbpostId}</if>
+		<if test = "type != null and type !=''">AND tbpostfile.type = #{type}</if>
+	</select>
+
+</mapper>

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <head th:replace="~{@{includes/admin/head}}"></head>
+</head>
+<body>
+
+<div id="wrapper">
+    <body th:replace="~{@{includes/admin/nav}}"></body>
+    <script>
+        $(".sidemenu_li_tbgalone").addClass("active");
+    </script>
+    <div id="page-wrapper" class="gray-bg dashbard-1">
+        <body th:replace="~{@{includes/admin/navbar_top}}"></body>
+        <div class="row wrapper border-bottom white-bg page-heading">
+            <div class="col-lg-12">
+                <h2>Home Alone Trial 상세 : <font class="font_tbgalonetrial_title"></font></h2>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="/admin">Home</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a href="/tbgalone/admin_list">게임모음</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a href="/tbgalone/admin_list">Home Alone 목록</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a href="javascript:location_href_path_param('/tbgalone/admin_detail/', $('#detail_tbgalonetrial_tbgaloneId').val())">Home Alone(<font class="font_tbgalone_title"></font>) 상세</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a href="javascript:location_href_path_param('/tbgalonetrial/admin_list/', $('#detail_tbgalonetrial_tbgaloneId').val())">Home Alone(<font class="font_tbgalone_title"></font>) Trial 목록</a>
+                    </li>
+                    <li class="breadcrumb-item active">
+                        <strong>Home Alone Trial 상세</strong>
+                    </li>
+                </ol>
+            </div>
+            <div class="col-lg-2">
+            </div>
+        </div>
+
+        <div class="animated fadeInRight" style="padding-top:12.5px;padding-bottom:0px;">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="ibox-title">
+                        <h5>#<font class="font_tbgalonetrial_id">-</font></h5>
+                    </div>
+                    <div class="ibox-content" style="padding-bottom:0.1px;">
+                        <input type="hidden" id="detail_tbgalonetrial_id" value="" />
+                        <input type="hidden" id="detail_tbgalonetrial_tbgaloneId" value="" />
+                        <div class="form-group row">
+                            <div class="col-sm-8"></div>
+                            <div class="col-sm-4">
+                                <table class="table table-bordered">
+                                    <tr>
+                                        <th style="width:60%;text-align: center;"></th>
+                                        <th style="width:40%;text-align: center;">총 조회수</th>
+                                        <td style="width:60%;text-align: right;"><font class="font_tbgalonetrial_countread">-</font></td>
+                                    </tr>
+                                </table>
+                            </div>
+
+
+                            <label class="col-sm-2 col-form-label">삭제여부</label>
+                            <div class="col-sm-4">
+                                <select class="form-control m-b" id="detail_tbgalonetrial_deleted" keyword="deleted" onchange="update_tbgalonetrial(this)">
+                                    <option value="N">일반</option>
+                                    <option value="Y">삭제</option>
+                                </select>
+                            </div>
+                            <label class="col-sm-6"></label>
+
+                            <label class="col-sm-2 col-form-label">*Trial 종류</label>
+                            <div class="col-sm-4">
+                                <select class="form-control m-b" id="detail_tbgalonetrial_cate" keyword="cate" onchange="update_tbgalonetrial(this)">
+                                    <option value="cpm">CPM 배너</option>
+                                    <option value="cpp">CPP 배너</option>
+                                    <option value="push">Push/문자메시지</option>
+                                    <option value="quiz">퀴즈</option>
+                                    <option value="customer">고객참여</option>
+
+                                    <option value="package">패키지</option>
+                                    <option value="popup">팝업/스플래시</option>
+                                    <option value="news">뉴스레터</option>
+                                    <option value="group">체험단/협찬</option>
+                                    <option value="brand">브랜디드(기획 PPL)</option>
+
+                                    <option value="cpa">CPA</option>
+                                </select>
+                            </div>
+                            <label class="col-sm-6"></label>
+
+                            <label class="col-sm-2 col-form-label">*Trial 이름</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="input_required form-control m-b" id="detail_tbgalonetrial_title" keyword="title" placeholder="내용을 입력하세요" errormsg="필수값입니다." onchange="update_tbgalonetrial(this)" />
+                            </div>
+                            <label class="col-sm-6"></label>
+
+                            <label class="col-sm-2 col-form-label">*가격 기준</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="input_required form-control m-b" id="detail_tbgalonetrial_mark" keyword="mark" placeholder="내용을 입력하세요" errormsg="필수값입니다." onchange="update_tbgalonetrial(this)" />
+                            </div>
+                            <label class="col-sm-2 col-form-label">*가격</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="input_required form-control m-b" id="detail_tbgalonetrial_price" keyword="price" placeholder="내용을 입력하세요" errormsg="필수값입니다." onchange="update_tbgalonetrial(this)" />
+                            </div>
+                            <label class="col-sm-2 col-form-label">성과지표</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control m-b" id="detail_tbgalonetrial_indicator" keyword="indicator" placeholder="내용을 입력하세요" errormsg="필수값입니다." onchange="update_tbgalonetrial(this)" />
+                            </div>
+                            <label class="col-sm-6"></label>
+
+                            <label class="col-sm-2 col-form-label" for="detail_tbgalonetrial_target">*타겟팅 여부</label>
+                            <div class="col-sm-1">
+                                <input type="checkbox" class="form-control m-t m-b" id="detail_tbgalonetrial_target" keyword="target" onchange="update_tbgalonetrial(this)" />
+                            </div>
+                            <label class="col-sm-9"></label>
+
+                            <label class="col-sm-2 col-form-label">*최소집행단가</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="input_required form-control m-b" id="detail_tbgalonetrial_min" keyword="min" placeholder="내용을 입력하세요" errormsg="필수값입니다." onchange="update_tbgalonetrial(this)" />
+                            </div>
+                            <label class="col-sm-2 col-form-label">*대행수수료</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="input_required form-control m-b" id="detail_tbgalonetrial_fee" keyword="fee" placeholder="내용을 입력하세요" errormsg="필수값입니다." onchange="update_tbgalonetrial(this)" />
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            $( document ).ready(function() {
+                console.log( "ready!" );
+                detail_tbgalonetrial();
+            });
+            function detail_tbgalone(){
+                let tbgaloneId = $("#detail_tbgalonetrial_tbgaloneId").val();
+                let _data = new Map();
+                _data.url = "/api/tbgalone";
+                _data.type = "GET";
+                _data.param = {'id':tbgaloneId};
+                _data.success = function(obj_data, obj_status, obj_xhr){
+                    //alert(JSON.stringify(obj_data));
+                    listenerAfterDetail(obj_data, "tbgalone");
+                    check_chk("input_tbgalonetrial_day");
+                }
+                _data.error = function(obj_data, obj_status, obj_xhr){
+                    alert("정상적으로 이루어지지 않았습니다. 다시 시도해주세요.");
+                }
+                func_ajax(_data);
+            }
+
+            function detail_tbgalonetrial(){
+                let tbgalonetrialId = getIdFromUrl(null);
+                let _data = new Map();
+                _data.url = "/api/tbgalonetrial";
+                _data.type = "GET";
+                _data.param = {'id':tbgalonetrialId};
+                _data.success = function(obj_data, obj_status, obj_xhr){
+                    listenerAfterDetail(obj_data, "tbgalonetrial");
+                    detail_tbgalone();
+                }
+                _data.error = function(obj_data, obj_status, obj_xhr){
+                    alert("정상적으로 이루어지지 않았습니다. 다시 시도해주세요.");
+                }
+                func_ajax(_data);
+            }
+            function update_tbgalonetrial(obj){
+                let _param = {};
+                _param["id"] = $("#detail_tbgalonetrial_id").val();
+                if($(obj).attr("type") === "checkbox"){
+                    _param[$(obj).attr("keyword")] = $(obj).prop("checked");
+                } else {
+                    _param[$(obj).attr("keyword")] = $(obj).val();
+                }
+
+                let _data = new Map();
+                _data.url = "/api/tbgalonetrial";
+                _data.type = "PUT";
+                _data.param = _param;
+                _data.success = function(obj_data, obj_status, obj_xhr){
+                    //alert("수정되었습니다.");
+                }
+                _data.error = function(obj_data, obj_status, obj_xhr){
+                    alert("정상적으로 이루어지지 않았습니다. 다시 시도해주세요.");
+                }
+                func_ajax(_data);
+            }
+        </script>
+        <body th:replace="~{@{includes/admin/footer}}"></body>
+    </div>
+    <body th:replace="~{@{includes/admin/right_sidebar}}"></body>
+</div>
+<body th:replace="~{@{includes/admin/bottom}}"></body>
+</body>
+</html>

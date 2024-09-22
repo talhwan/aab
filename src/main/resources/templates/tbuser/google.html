@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <head th:replace="~{@{includes/user/head}}"></head>
+</head>
+
+<style>
+    .font_poppins {
+        font-family: "Poppins", sans-serif;
+        font-weight: 300;
+        font-style: normal;
+    }
+    #div_main {
+        background-image: url("/resources/homealone/assets/images/main_bg.png");
+        background-color: #cccccc;
+        background-repeat: no-repeat;
+        background-size: cover;
+
+        max-width:500px;
+        margin: 0 auto;
+        height:100%;
+        /*
+        aspect-ratio : 720 / 1280
+        */
+    }
+    @media (max-width: 500px) {
+        #div_main {
+            /*aspect-ratio : auto;*/
+        }
+    }
+</style>
+
+<body style="height:100vh;text-align:center;margin: 0;background-color: #3d3d3d;">
+<div id="div_main">
+    <img src="/resources/homealone/assets/images/main_logo.png" style="width:75%;margin-top:35vh" alt="logo"/>
+    <div class="font_poppins" style="font-size:1.3em;color:#ffffff">
+        Loading...
+    </div>
+
+    <div style="display: none">
+        =========================================
+        <input type="hidden1" id="refreshToken" th:value="${token.refreshToken}" />
+        <div th:text="${token.refreshToken}">-</div>
+        <input type="hidden1" id="accessToken" th:value="${token.accessToken}" />
+        <div th:text="${token.accessToken}">-</div>
+        =========================================
+    </div>
+</div>
+
+<body th:replace="~{@{includes/user/bottom}}"></body>
+<script>
+    let tempRefreshToken = $("#refreshToken").val();
+    let tempAccessToken = $("#accessToken").val();
+
+    if(tempRefreshToken === "kakaosignup"){
+        alert("카카오 로그인으로 가입이 불가합니다.");
+        location.replace("/tbuser/login");
+    }
+    if(isNull(tempRefreshToken) || isNull(tempAccessToken)){
+        alert("정상적으로 로그인 되지 않았습니다.");
+        location.replace("/tbuser/login");
+    } else {
+        localStorage.setItem("refreshToken", tempRefreshToken);
+        localStorage.setItem("accessToken", tempAccessToken);
+        location.replace("/index");
+    }
+</script>
+
+</body>
+</html>
+

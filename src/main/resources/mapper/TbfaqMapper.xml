@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0/EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.thc.sprboot.mapper.TbfaqMapper">
+
+	<!---->
+	<select id="detail" parameterType="hashMap" resultType="com.thc.sprboot.dto.TbfaqDto$DetailResDto">
+		SELECT tbfaq.id
+			,tbfaq.deleted
+			,tbfaq.process
+			,tbfaq.created_at as createdAt
+			,tbfaq.modified_at as modifiedAt
+
+			,tbfaq.sequence
+			,tbfaq.cate
+			,tbfaq.title
+			,tbfaq.content
+			,tbfaq.img
+
+		FROM tbfaq
+		WHERE tbfaq.id = #{id}
+	</select>
+	<select id="list" parameterType="hashMap" resultType="com.thc.sprboot.dto.TbfaqDto$DetailResDto">
+		SELECT tbfaq.id
+		FROM tbfaq
+		WHERE tbfaq.id is not NULL
+		<if test = "deleted != null and deleted !=''">AND tbfaq.deleted = #{deleted}</if>
+		<if test = "process != null and process !=''">AND tbfaq.process = #{process}</if>
+		<if test = "sdate != null and sdate !=''">AND tbfaq.created_at >= CONCAT(#{sdate}, ' 00:00:00.000000')</if>
+		<if test = "fdate != null and fdate !=''">AND CONCAT(#{fdate}, ' 23:59:59.999999') >= tbfaq.created_at</if>
+		<if test = "cate != null and cate !=''">AND tbfaq.cate = #{cate}</if>
+		<if test = "title != null and title !=''">AND tbfaq.title LIKE CONCAT('%', #{title}, '%')</if>
+		ORDER BY tbfaq.sequence DESC
+	</select>
+
+	<select id="scrollList" parameterType="hashMap" resultType="com.thc.sprboot.dto.TbfaqDto$DetailResDto">
+		SELECT tbfaq.id
+		FROM tbfaq
+		WHERE tbfaq.id is not NULL
+		<if test = "deleted != null and deleted !=''">AND tbfaq.deleted = #{deleted}</if>
+		<if test = "process != null and process !=''">AND tbfaq.process = #{process}</if>
+		<if test = "sdate != null and sdate !=''">AND tbfaq.created_at >= CONCAT(#{sdate}, ' 00:00:00.000000')</if>
+		<if test = "fdate != null and fdate !=''">AND CONCAT(#{fdate}, ' 23:59:59.999999') >= tbfaq.created_at</if>
+		<if test = "cate != null and cate !=''">AND tbfaq.cate = #{cate}</if>
+		<if test = "title != null and title !=''">AND tbfaq.title LIKE CONCAT('%', #{title}, '%')</if>
+
+		<if test = "orderby =='created_at'">
+			<if test = "orderway =='desc'">
+				<if test = "cursor != null and cursor !=''">AND STR_TO_DATE(#{cursor}, '%Y-%m-%d %H:%i:%s.%f') > tbfaq.created_at </if>
+				ORDER BY tbfaq.created_at DESC
+			</if>
+			<if test = "orderway =='asc'">
+				<if test = "cursor != null and cursor !=''">AND tbfaq.created_at > STR_TO_DATE(#{cursor}, '%Y-%m-%d %H:%i:%s.%f')</if>
+				ORDER BY tbfaq.created_at ASC
+			</if>
+		</if>
+		<if test = "orderby =='title'">
+			<if test = "orderway =='desc'">
+				<if test = "cursor != null and cursor !=''">AND #{cursor} > tbfaq.title</if>
+				ORDER BY tbfaq.title DESC
+			</if>
+			<if test = "orderway =='asc'">
+				<if test = "cursor != null and cursor !=''">AND tbfaq.title > #{cursor}</if>
+				ORDER BY tbfaq.title ASC
+			</if>
+		</if>
+		LIMIT 0, #{perpage}
+	</select>
+
+	<select id="pagedList" parameterType="hashMap" resultType="com.thc.sprboot.dto.TbfaqDto$DetailResDto">
+		SELECT tbfaq.id
+		FROM tbfaq
+		WHERE tbfaq.id is not NULL
+		<if test = "deleted != null and deleted !=''">AND tbfaq.deleted = #{deleted}</if>
+		<if test = "process != null and process !=''">AND tbfaq.process = #{process}</if>
+		<if test = "sdate != null and sdate !=''">AND tbfaq.created_at >= CONCAT(#{sdate}, ' 00:00:00.000000')</if>
+		<if test = "fdate != null and fdate !=''">AND CONCAT(#{fdate}, ' 23:59:59.999999') >= tbfaq.created_at</if>
+		<if test = "cate != null and cate !=''">AND tbfaq.cate = #{cate}</if>
+		<if test = "title != null and title !=''">AND tbfaq.title LIKE CONCAT('%', #{title}, '%')</if>
+
+		<if test = "orderby =='created_at'">ORDER BY tbfaq.created_at </if>
+		<if test = "orderby =='title'">ORDER BY tbfaq.title </if>
+		<if test = "orderway =='asc'">ASC</if>
+		<if test = "orderway =='desc'">DESC</if>
+		LIMIT #{offset}, #{perpage}
+	</select>
+	<select id="pagedListCount" parameterType="hashMap" resultType="Integer">
+		SELECT count(tbfaq.id) as listsize
+		FROM tbfaq
+		WHERE tbfaq.id is not NULL
+		<if test = "deleted != null and deleted !=''">AND tbfaq.deleted = #{deleted}</if>
+		<if test = "process != null and process !=''">AND tbfaq.process = #{process}</if>
+		<if test = "sdate != null and sdate !=''">AND tbfaq.created_at >= CONCAT(#{sdate}, ' 00:00:00.000000')</if>
+		<if test = "fdate != null and fdate !=''">AND CONCAT(#{fdate}, ' 23:59:59.999999') >= tbfaq.created_at</if>
+		<if test = "cate != null and cate !=''">AND tbfaq.cate = #{cate}</if>
+		<if test = "title != null and title !=''">AND tbfaq.title LIKE CONCAT('%', #{title}, '%')</if>
+	</select>
+
+</mapper>

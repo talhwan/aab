@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <head th:replace="~{@{includes/user/head}}"></head>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+
+<style>
+    .font_opacity {
+        opacity : 0.5;
+    }
+    .font_poppins {
+        font-family: "Poppins", sans-serif;
+        font-style: normal;
+    }
+    .font_baloo {
+        font-family: 'balooregular';
+        font-style: normal;
+    }
+    .font_weight_300 {
+        font-weight: 300;
+    }
+    .font_weight_400 {
+        font-weight: 400;
+    }
+    .font_weight_500 {
+        font-weight: 500;
+    }
+    .font_weight_600 {
+        font-weight: 600;
+    }
+    .font_weight_700 {
+        font-weight: 700;
+    }
+    #div_main {
+        background-image: url("/resources/homealone/assets/images/list_bg.png");
+        background-color: #cccccc;
+        background-repeat: no-repeat;
+        background-size: cover;
+
+        max-width:500px;
+        margin: 0 auto;
+        height:100%;
+    }
+
+    .table_lobby {
+        margin-top:62px;
+        width:100%;
+        color:#ffffff;
+    }
+    .font_lobby {
+        font-size: 40px;
+    }
+    .btn_ready {
+        background-image: url("/resources/homealone/assets/images/ready_btn.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+
+        width:90%;
+        margin: 0 auto;
+        margin-top:36px;
+        aspect-ratio : 592 / 120;
+    }
+    .font_ready {
+        font-size: 36px;
+        padding-top:15px;
+        color:#ffffff;
+    }
+    .table_info {
+        margin: 0 auto;
+        width:91%;
+        color:#ffffff;
+        margin-top:12px;
+    }
+
+
+
+
+    @media (max-width: 500px) {
+        /*작은 화면 일 경우*/
+        .table_lobby {
+            margin-top:14px;
+        }
+        .font_lobby {
+            font-size: 32px;
+        }
+        .btn_ready {
+            width:90%;
+            margin: 0 auto;
+            margin-top:36px;
+            aspect-ratio : 592 / 120;
+        }
+        .font_ready {
+            font-size: 7vw;
+            padding-top: 3.5vw;
+            color:#ffffff;
+        }
+
+
+
+
+    }
+
+    @font-face {
+        font-family: 'balooregular';
+        src: url('/resources/homealone/assets/fonts/baloo_webfont.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+    }
+</style>
+
+<body style="height:100vh;text-align:center;margin: 0;background-color: #3d3d3d;">
+<div id="div_main">
+    <div id="div_container" style="padding: 0 5%;">
+        <img src="/resources/homealone/assets/images/main_logo.png" style="margin-top:5vh;width:30%;" alt="logo"/>
+        <table class="table_lobby">
+            <tr>
+                <td><div class="font_poppins font_opacity font_weight_400" style="float:left;">Min</div></td>
+                <td rowspan="2"><div class="font_lobby font_baloo font_weight_400">Ready?</div></td>
+                <td><div class="font_poppins font_opacity font_weight_400" style="float:right;color:#ffffff;">Max</div></td>
+            </tr>
+            <tr>
+                <td><div class="font_poppins font_weight_400" style="float:left;font-size: 1.2rem">3</div></td>
+                <td><div class="font_poppins font_weight_400" style="float:right;font-size: 1.2rem">100</div></td>
+            </tr>
+        </table>
+
+        <div class="btn_ready">
+            <div class="font_ready font_poppins font_weight_700">$<font class="font_tbgalone_fee">-</font> GAME</div>
+        </div>
+
+        <table class="table_info">
+            <tr>
+                <td style="width:40px;padding-top: 5px">
+                    <div class="font_poppins font_weight_400" style="float:left;">
+                        <img src="/resources/homealone/assets/images/ready_people.png" style="width:25px;" alt="logo"/>
+                    </div>
+                </td>
+                <td>
+                    <div class="font_poppins font_weight_400" style="float:left;font-size: 16px">
+                        Live game participants
+                    </div>
+                </td>
+                <td><div class="font_poppins font_weight_700" style="float:right;font-size: 20px"><font class="font_tbgalone_countnum">-</font></div></td>
+            </tr>
+            <tr>
+                <td style="width:40px;padding-top: 5px">
+                    <div class="font_poppins font_weight_400" style="float:left;">
+                        <img src="/resources/homealone/assets/images/ready_timer.png" style="width:25px;" alt="logo"/>
+                    </div>
+                </td>
+                <td>
+                    <div class="font_poppins font_weight_400" style="float:left;font-size: 16px">
+                        Timer
+                    </div>
+                </td>
+                <td><div class="font_poppins font_weight_700" style="float:right;font-size: 20px"><font class="font_tbgalone_remainsecond">-</font></div></td>
+            </tr>
+        </table>
+        <input type="hidden" id="detail_tbgalone_id" />
+        <input type="hidden" id="detail_tbgalone_startdatetime" />
+        <input type="hidden" id="detail_tbgalone_countnum" />
+        <div class="font_poppins font_weight_700" style="font-size:24px;color:#ffffff;margin-top:20%">
+            Waiting for Other Players...
+        </div>
+    </div>
+</div>
+</body>
+<body th:replace="~{@{includes/user/bottom}}"></body>
+<script>
+    $( document ).ready(function() {
+        console.log( "ready!" );
+        join_tbgaloneuser();
+    });
+</script>
+<script>
+    function join_tbgaloneuser(){
+        let fee = getIdFromUrl(null);
+        let _param = {
+            'fee' : fee
+        };
+        let _data = new Map();
+        _data.url = "/api/tbgaloneuser/join";
+        _data.type = "POST";
+        _data.param = _param;
+        _data.success = function(obj_data, obj_status, obj_xhr){
+            //alert(JSON.stringify(obj_data));
+            $("#detail_tbgalone_id").val(obj_data["tbgaloneId"]);
+            connect_socket();
+        }
+        _data.error = function(obj_data, obj_status, obj_xhr){
+            alert("정상적으로 이루어지지 않았습니다. 다시 시도해주세요.");
+        }
+        func_ajax(_data);
+    }
+</script>
+<script>
+    let intervalFunc = null;
+    let intervalTime = 1;
+    function countInterval() {
+        let startTime = new Date($("#detail_tbgalone_startdatetime").val());
+        let nowTime = new Date();
+        let diffMSec = startTime.getTime() - nowTime.getTime();
+        let diffSec = diffMSec / 1000;
+        if (diffSec < 0) {
+            $(".font_tbgalone_remainsecond").text("00:00");
+        } else {
+            let diffMinute = Math.floor(diffSec / 60);
+            let diffSecond = Math.floor(diffSec % 60);
+            $(".font_tbgalone_remainsecond").text(number2digit(diffMinute) + ":" + number2digit(diffSecond));
+
+            let tempCountnum = Number($("#detail_tbgalone_countnum").val());
+            $(".font_tbgalone_countnum").text(tempCountnum);
+        }
+    }
+    function startIntervalFunc() {
+        if (intervalFunc != null || intervalFunc !== "undefined") {
+            stopIntervalFunc();
+        }
+        intervalFunc = setInterval(countInterval, 1000 * intervalTime);
+    }
+    function stopIntervalFunc() {
+        clearInterval(intervalFunc);
+    }
+</script>
+<script>
+    let websocket = null;
+    function connect_socket(){
+        let hreforigin_for_socket = document.location.origin;
+        let hrefprotocol_for_socket = document.location.protocol;
+        let final_for_socket = "";
+
+        final_for_socket = hreforigin_for_socket.replace(hrefprotocol_for_socket, "");
+
+        let http_add_value = "";
+        if(hreforigin_for_socket.indexOf("https") == 0){
+            http_add_value = "s";
+        }
+        websocket = new WebSocket("ws"+http_add_value+":"+final_for_socket+"/livews?cate=" +"tbgalone_"+ $("#detail_tbgalone_id").val());
+        websocket.onmessage = onMessage;
+        websocket.onclose = onClose;
+    }
+    function onMessage(msg) {
+        let msg_data = JSON.parse(msg.data);
+        console.log(JSON.stringify(msg_data));
+        console.log(JSON.stringify(msg_data["data"]["startdatetime"]));
+        console.log(JSON.stringify(msg_data["data"]["process"]));
+
+        if(msg_data["wsType"] === "tbgalone_" + $("#detail_tbgalone_id").val()){
+            //시간 연장 관련
+            let detail_tbgalone_startdatetime = $("#detail_tbgalone_startdatetime").val();
+            console.log("detail_tbgalone_startdatetime : " + detail_tbgalone_startdatetime);
+            if(detail_tbgalone_startdatetime !== "" && detail_tbgalone_startdatetime !== msg_data["data"]["startdatetime"]){
+                alert("timer reset");
+            }
+            listenerAfterDetail(msg_data["data"], "tbgalone");
+            startIntervalFunc();
+
+            //게임 시작 관련
+            if(msg_data["data"]["process"] === "started"){
+                stopIntervalFunc();
+                location.href = "/tbgalone/play/" + $("#detail_tbgalone_id").val();
+            }
+        }
+    }
+
+    function onClose() {
+        console.log("disconnect websocket!");
+        connect_socket();
+    }
+</script>
+</html>

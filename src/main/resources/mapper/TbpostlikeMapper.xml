@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0/EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.thc.sprboot.mapper.TbpostlikeMapper">
+
+	<!---->
+	<select id="detail" parameterType="hashMap" resultType="com.thc.sprboot.dto.TbpostlikeDto$DetailResDto">
+		SELECT tbpostlike.id
+			,tbpostlike.deleted
+			,tbpostlike.process
+			,tbpostlike.created_at as createdAt
+			,tbpostlike.modified_at as modifiedAt
+
+		    ,tbpostlike.tbpost_id as tbpostId
+			,tbpostlike.tbuser_id as tbuserId
+			,tbpostlike.content
+
+		FROM tbpostlike
+		WHERE tbpostlike.id = #{id}
+	</select>
+	<select id="list" parameterType="hashMap" resultType="com.thc.sprboot.dto.TbpostlikeDto$DetailResDto">
+		SELECT tbpostlike.id
+		FROM tbpostlike
+		WHERE tbpostlike.id is not NULL
+		<if test = "deleted != null and deleted !=''">AND tbpostlike.deleted = #{deleted}</if>
+		<if test = "tbpostId != null and tbpostId !=''">AND tbpostlike.tbpost_id = #{tbpostId}</if>
+		<if test = "tbuserId != null and tbuserId !=''">AND tbpostlike.tbuser_id = #{tbuserId}</if>
+		ORDER BY tbpostlike.created_at DESC
+	</select>
+
+	<select id="scrollList" parameterType="hashMap" resultType="com.thc.sprboot.dto.TbpostlikeDto$DetailResDto">
+		SELECT tbpostlike.id
+		FROM tbpostlike
+		WHERE tbpostlike.id is not NULL
+		<if test = "deleted != null and deleted !=''">AND tbpostlike.deleted = #{deleted}</if>
+		<if test = "tbpostId != null and tbpostId !=''">AND tbpostlike.tbpost_id = #{tbpostId}</if>
+		<if test = "tbuserId != null and tbuserId !=''">AND tbpostlike.tbuser_id = #{tbuserId}</if>
+
+		<if test = "orderby =='created_at'">
+			<if test = "orderway =='desc'">
+				<if test = "cursor != null and cursor !=''">AND STR_TO_DATE(#{cursor}, '%Y-%m-%d %H:%i:%s.%f') > tbpostlike.created_at </if>
+				ORDER BY tbpostlike.created_at DESC
+			</if>
+			<if test = "orderway =='asc'">
+				<if test = "cursor != null and cursor !=''">AND tbpostlike.created_at > STR_TO_DATE(#{cursor}, '%Y-%m-%d %H:%i:%s.%f')</if>
+				ORDER BY tbpostlike.created_at ASC
+			</if>
+		</if>
+		<if test = "orderby =='tbuserId'">
+			<if test = "orderway =='desc'">
+				<if test = "cursor != null and cursor !=''">AND #{cursor} > tbpostlike.tbuserId</if>
+				ORDER BY tbpostlike.tbuserId DESC
+			</if>
+			<if test = "orderway =='asc'">
+				<if test = "cursor != null and cursor !=''">AND tbpostlike.tbuserId > #{cursor}</if>
+				ORDER BY tbpostlike.tbuserId ASC
+			</if>
+		</if>
+		LIMIT 0, #{perpage}
+	</select>
+
+	<select id="pagedList" parameterType="hashMap" resultType="com.thc.sprboot.dto.TbpostlikeDto$DetailResDto">
+		SELECT tbpostlike.id
+		FROM tbpostlike
+		WHERE tbpostlike.id is not NULL
+		<if test = "deleted != null and deleted !=''">AND tbpostlike.deleted = #{deleted}</if>
+		<if test = "tbpostId != null and tbpostId !=''">AND tbpostlike.tbpost_id = #{tbpostId}</if>
+		<if test = "tbuserId != null and tbuserId !=''">AND tbpostlike.tbuser_id = #{tbuserId}</if>
+
+		<if test = "orderby =='created_at'">ORDER BY tbpostlike.created_at </if>
+		<if test = "orderby =='tbuserId'">ORDER BY tbpostlike.tbuserId </if>
+		<if test = "orderway =='asc'">ASC</if>
+		<if test = "orderway =='desc'">DESC</if>
+		LIMIT #{offset}, #{perpage}
+	</select>
+	<select id="pagedListCount" parameterType="hashMap" resultType="Integer">
+		SELECT count(tbpostlike.id) as listsize
+		FROM tbpostlike
+		WHERE tbpostlike.id is not NULL
+		<if test = "deleted != null and deleted !=''">AND tbpostlike.deleted = #{deleted}</if>
+		<if test = "tbpostId != null and tbpostId !=''">AND tbpostlike.tbpost_id = #{tbpostId}</if>
+		<if test = "tbuserId != null and tbuserId !=''">AND tbpostlike.tbuser_id = #{tbuserId}</if>
+	</select>
+
+</mapper>
