@@ -3,6 +3,9 @@
   background-color: $primary-black;  // 배경색: 블랙
   color: $primary-white;  // 텍스트 색상: 흰색
   position: relative;  // Enable positioning for child elements
+  margin-left: 10%;
+  margin-right: 10%;
+  
 
   .tournament-logo-section{
     display:flex;
@@ -14,15 +17,16 @@
     justify-content: flex-end;
     width: 50vw;
     padding-top: 5vw;
-    padding-right: 5vw;
+  
   }
   
   .tournament-content {
     bottom: 30vw;  // Align content to the bottom
-    left: 2vw;  // Align content to the left side
     padding: 2vw;
+    padding-left: 0;
     padding-top: 0;
     margin: 0;
+
 
     .tournament-info {
       h3 {
@@ -107,8 +111,8 @@
     background-color: #EF283D;
     padding: 1vw 2vw; /* 좌우 여백 추가 */
     padding-bottom: 2vw;
-    padding-left: 7vw;
-    padding-right: 7vw;
+    padding-left: 10%;
+    padding-right: 10%;
     .back-link {
       color: black; /* 텍스트 색상 */
       text-decoration: none; /* 밑줄 제거 */
@@ -179,24 +183,25 @@
 
       .detail-item {
         text-align: center;
+       
 
         span {
           display: block;
           font-size: 2vw;
-          margin-bottom: 0.5vw;
           color: #010101;
           margin-top: 1.5vw;
         }
 
         p {
-          font-size: 1.5vw;
+          font-size: 1.8vw;
           color: #010101;
+          margin-top: 1.2vw;
         }
       }
     
       .icon{
-        width: 2.5vw; /* 아이콘 크기 */
-        height: 2.5vw; /* 아이콘 크기 */
+        width: 3vw; /* 아이콘 크기 */
+        height: 3vw; /* 아이콘 크기 */
       }
     }
 
@@ -348,20 +353,24 @@
       padding: 0; /* 패딩 제거 */
       margin: 0; /* 마진 제거 */
       display: block;
+      object-fit: cover; /* 이미지가 찌그러지지 않고 자르도록 설정 */
     }
 
     .prevB, .nextB {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      background-color: #EF283D; /* 버튼 색상 */
-      color: #FFFFFF;
       border: none;
-      padding: 0.5vw;
-      font-size: 2vw;
+      background-color: transparent;
       cursor: pointer;
       z-index: 2;
-      border-radius: 50%;
+      
+      img{
+        position: relative;
+        width: 2vw;
+        height: 2vw;
+        padding-right: 0.2vw;
+      }
     }
 
     .prevB {

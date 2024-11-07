@@ -19,13 +19,6 @@
           height: 6.5vw;  /* 로고의 높이를 vw로 변경 */
           margin-bottom: 0.1vw; /* 로고와 텍스트 사이의 간격을 vw로 변경 */
         }
-    
-        .footer-logo-text {
-          color: $primary-red;
-          font-size: 1.5vw;  /* 텍스트 크기를 vw 단위로 변경 */
-          font-weight: bold;
-          text-align: center;
-        }
     }
   
     .footer-logo-social {

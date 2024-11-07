@@ -1,4 +1,4 @@
-/* 기본 모달 스타일 */
+/* 공통 모달 스타일 */
 .login-modal {
   position: fixed;
   top: 0;
@@ -13,19 +13,30 @@
 }
 
 .login-modal-content {
-  background-color: $primary-red;
   padding: 1rem;
   width: 90%;
-  height: 550px;
+  height: 570px;
   max-width: 450px;
-  color: $primary-white;
   display: flex;
   justify-content: center; /* 가로축 중앙 정렬 */
-  align-items:flex-start; /* 세로축 중앙 정렬 */
+  align-items: flex-start; /* 세로축 중앙 정렬 */
   box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3); /* 그림자 추가 */
 }
 
-/* 닫기 버튼 스타일 - 기본적으로 숨김 */
+/* 모달 내부 박스 공통 스타일 */
+.login-modal-content-innerbox {
+  padding: 4.5rem;
+  max-width: 400px;
+  height: 100%;
+  max-height: 420px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  border: 1px solid $primary-white; /* 하얀색 테두리 추가 */
+}
+
+/* 닫기 버튼 */
 .login-close-btn {
   display: none;
   position: absolute;
@@ -39,165 +50,84 @@
   transition: color 0.3s ease;
 
   &:hover {
-    color: #ffcc00; /* 닫기 버튼 호버 시 색상 변경 */
+    color: #ffcc00;
   }
 }
 
-
-.login-modal-content-innerbox {
-  border: 1px solid $primary-white; /* 하얀색 테두리 추가 */
-  padding: 4rem; /* 고정된 내부 패딩 */
-  padding-left: 5rem;
-  width: 100%; /* 컨테이너 너비 고정 */
-  max-width: 400px; /* 너비 최대값 설정 */
-  height: 100%; /* 컨테이너 높이 고정 */
-  max-height: 420px; /* 높이 최대값 설정 */
+/* 공통 버튼 스타일 */
+.sign-up-btn, .sign-in-btn {
+  margin-top: 1.5rem;
   display: flex;
-  flex-direction: column; /* 세로로 정렬 */
-  justify-content: center; /* 가로축 중앙 정렬 */
-  align-items: flex-start; /* 가로축 중앙 정렬 */
-}
-
-
-h1 {
-  color: $primary-black;
-  font-size: 2.8rem; /* 반응형 제목 크기 */
-  font-weight: bold;
-  text-align: left;
-  padding-bottom: 0;
-  margin-bottom: 0;
-}
-
-p {
-  font-size: 1.3rem;
-  font-family: 'Bebas Neue', sans-serif;
-  line-height: 1.5;
-  margin-bottom: 1.5rem;
-  text-align: left;
-  padding-top: 0;
-  margin-top: 0;
-}
-
-h2 {
-  margin-bottom: 0;
-
-}
-h3 {
-  margin: 0.5rem;
-  margin-left: 0;
-  padding: 0;
-  font-size: 1rem;
-  font-weight: 400;
-  font-family: 'Bebas Neue', sans-serif;
-
-
-}
-
-ul {
-  margin: 0;
-  padding: 0;
-  margin-bottom: 1rem;
-  margin-left: 1rem;
-}
-
-li {
-  font-size: 0.6rem;
-  margin-bottom: 0.3rem;
-  color: $primary-white;
-}
-
-h4 {
-  font-family: 'Academic M54', sans-serif;
-  margin: 0;
-  padding: 0;
-  font-size: 1rem;
-  padding-right: 3rem;
-  padding-left: 3rem;
-  color: #fff;
-}
-
-.login-email-input {
   align-items: center;
-  margin-bottom: 2rem;
+  justify-content: center;
+  border: none;
+  border-radius: 50px;
+  padding: 0.2rem 5rem;
+  padding-left: 2rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 
-  input {
-    flex: 1;
-    padding: 0.5rem;
-    font-size: 0.7rem;
-    border: none;
-    outline: none;
-    color: #FFFFFF; /* 글자 색상을 흰색으로 설정 */
-    font-style: italic; /* 글자를 기울여서 표시 */
-    border-bottom: 1px solid #000000; /* 검은색 아래 테두리 */
-    background-color: transparent; /* 배경 투명하게 설정 */
-    padding-right: 8rem;
+  .divider {
+    width: 1px;
+    height: 1.4rem;
+    background-color: #fff;
+    margin-right: 1rem;
+    margin-right:4rem;
 
-    ::placeholder {
-      color: #000000 !important; /* Placeholder의 색상을 검정으로 설정 */
-      opacity: 1; /* 투명도 조정 */
-      font-style: italic; /* Placeholder 글자를 기울여서 표시 */
-    }
-
-    &::-webkit-input-placeholder {
-      color: #000000 !important;
-      opacity: 1 !important;
-      font-style: italic !important;
-    }
-
-    &::-moz-placeholder {
-      color: #000000 !important;
-      opacity: 1 !important;
-      font-style: italic !important;
-    }
-
-    &:-ms-input-placeholder {
-      color: #000000 !important;
-      opacity: 1 !important;
-      font-style: italic !important;
-    }
   }
 
-  .sign-up-btn {
-    margin-top: 1.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #000;
-    color: #fff;
-    border: none;
-    border-radius: 50px;
-    padding: 0.5rem 1.8rem;
-    font-size: 1.2rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+  .user-icon, .chat-icon {
+    width: 1.1rem; /* 아이콘 크기 */
+    height: 1.1rem;
+    margin-right: 1rem;
+  }
 
-    .user-icon {
-      width: 1.2rem; /* 아이콘 크기 반응형으로 설정 */
-      height: 1.2rem;
-      margin-right: 1rem;
-    }
+  h4 {
+    margin: 0; /* h4의 마진 제거 */
+    padding: 0; /* h4의 패딩 제거 */
+  }
+}
 
-    .divider {
-      width: 1px;
-      height: 1.5rem;
-      background-color: #fff;
-      margin-right: 1rem;
-    }
+/* 이메일 입력 필드 스타일 */
+.login-email-input input {
+  width: 100%; /* 가로 길이를 100%로 설정 */
+  padding: 0.5rem 0; /* 위아래 패딩 */
+  font-size: 1rem;
+  border: none; /* 기본 테두리 제거 */
+  border-bottom: 1px solid #000; /* 아래쪽 테두리만 검은색 */
+  background-color: transparent; /* 배경 투명하게 설정 */
+  color: #000; /* 글자 색상 */
+  font-style: italic; /* 글자를 기울여서 표시 */
 
-    p {
-      margin: 0;
-      padding: 0;
-      font-size: 1rem;
-      font-weight: inherit;
-      line-height: 1;
-      padding-right: 3rem;
-      padding-left: 3rem;
-    }
+  ::placeholder {
+    color: #000; /* Placeholder의 색상을 검정으로 설정 */
+    font-style: italic; /* Placeholder 글자를 기울여서 표시 */
+    opacity: 1; /* 투명도 설정 */
+  }
 
-    &:hover {
-      background-color: #333;
-    }
+  &:focus {
+    outline: none; /* 포커스 시 기본 외곽선 제거 */
+    border-bottom: 2px solid #000; /* 포커스 시 테두리 두께 증가 */
+  }
+
+  &::-webkit-input-placeholder {
+    color: #000000 !important;
+    opacity: 1 !important;
+    font-style: italic !important;
+  }
+
+  &::-moz-placeholder {
+    color: #000000 !important;
+    opacity: 1 !important;
+    font-style: italic !important;
+  }
+
+  &:-ms-input-placeholder {
+    color: #000000 !important;
+    opacity: 1 !important;
+    font-style: italic !important;
   }
 }
 
@@ -206,155 +136,166 @@ h4 {
   display: none;
 }
 
-/* Sign In 상태로 전환되었을 때 */
-.sign-in-active .login-email-input input {
-  border-bottom: 1px solid #FFFFFF; /* Sign In 모드에서 아래 테두리를 흰색으로 변경 */
+/* 로그인 모달 전용 스타일 */
+#login-modal {
+  .login-modal-content {
+    background-color: $primary-red; /* 배경색 빨간색 */
+    color: $primary-white;
+  }
+
+  h1 {
+    color: $primary-black;
+    font-size: 3rem;
+    margin: 0;
+  }
+
+  p {
+    color: $primary-white;
+    font-size: 1.5rem;
+    margin: 0;
+    margin-top: 1rem;
+  }
+  .login-email-input input {
+    margin-top: 4rem;
+  }
+
+  .sign-up-btn {
+    background-color: #000;
+    color: #fff;
+    &:hover {
+      background-color: #333;
+    }
+  }
+}
+
+/* 카카오 회원가입 모달 전용 스타일 */
+#kakao-modal {
+  .login-modal-content {
+    background-color: #000; /* 배경색 검정 */
+    color: $primary-black;
+  }
+
+  h1 {
+    color: $primary-red;
+    font-size: 2.6rem;
+    margin: 0;
+    margin-bottom: 1rem;
+  }
+
+  h2 {
+    color: $primary-white;
+    margin: 0;
+  }
+
+  h3 {
+    color: $primary-white;
+    margin: 0;
+    margin-top: 0.2rem;
+    font-size: 1rem;
+  }
+
+  ul {
+    color: $primary-white;
+    font-size: 0.7rem;
+    padding-left: 0; /* 기본적으로 ul에 적용된 패딩을 없앰 */
+    margin-left: 0;  /* 기본적으로 ul에 적용된 마진을 없앰 */
+    list-style-position: inside; /* 리스트 아이콘을 내부에 표시 */
+    margin-bottom: 2rem;
+
+  }
+
+  p, h4 {
+    color: $primary-black;
+  }
+
+  .sign-in-btn {
+    background-color: #F9E200;
+    &:hover {
+      background-color: #ffcc00;
+    }
+  }
+
+  /* 이메일 입력 필드 스타일 */
+.login-email-input input {
+  width: 100%; /* 가로 길이를 100%로 설정 */
+  padding: 0.5rem 0; /* 위아래 패딩 */
+  font-size: 1rem;
+  border: none; /* 기본 테두리 제거 */
+  border-bottom: 1px solid #fff; /* 아래쪽 테두리만 검은색 */
+  background-color: transparent; /* 배경 투명하게 설정 */
+  color: #fff; /* 글자 색상 */
+  font-style: italic; /* 글자를 기울여서 표시 */
 
   ::placeholder {
-    color: #FFFFFF !important; /* Placeholder 색상을 흰색으로 변경 */
+    color: #fff; /* Placeholder의 색상을 검정으로 설정 */
+    font-style: italic; /* Placeholder 글자를 기울여서 표시 */
+    opacity: 1; /* 투명도 설정 */
+  }
+
+  &:focus {
+    outline: none; /* 포커스 시 기본 외곽선 제거 */
+    border-bottom: 2px solid #fff; /* 포커스 시 테두리 두께 증가 */
   }
 
   &::-webkit-input-placeholder {
-    color: #FFFFFF !important;
+    color: #fff !important;
+    opacity: 1 !important;
+    font-style: italic !important;
   }
 
   &::-moz-placeholder {
-    color: #FFFFFF !important;
+    color: #fff !important;
+    opacity: 1 !important;
+    font-style: italic !important;
   }
 
   &:-ms-input-placeholder {
-    color: #FFFFFF !important;
+    color: #fff !important;
+    opacity: 1 !important;
+    font-style: italic !important;
   }
 }
-
-.sign-in-active .login-modal-content {
-  background-color: #000; /* Sign In 모드에서 배경 검정색 */
 }
 
-.sign-in-active h1 {
-  color: $primary-red;
-}
-
-.sign-in-active p {
-  color: #fff; /* Sign In 모드에서 글자색 흰색 */
-}
-
-.sign-in-active .sign-up-btn {
-  background-color: #ffcc00; /* Sign In 버튼 배경 노란색 */
-  color: #000;
-
-  &:hover {
-    background-color: #e6b800; /* 호버 시 배경색 */
-  }
-}
-
-.sign-in-btn {
-  margin-top: 1.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #ffcc00;
-  color: #000;
-  border: none;
-  border-radius: 50px;
-  padding: 0.5rem 1.8rem;
-  font-size: 1.2rem;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-
-  .chat-icon {
-    width: 1.2rem; /* 아이콘 크기 반응형으로 설정 */
-    height: 1.2rem;
-    margin-right: 1rem;
-  }
-
-  .divider {
-    width: 1px;
-    height: 1.5rem;
-    background-color: #000;
-    margin-right: 1rem;
-  }
-
-  h4 {
-    margin: 0;
-    padding: 0;
-    font-size: 1rem;
-    padding-right: 3rem;
-    padding-left: 3rem;
-    color: #000;
-  }
-
-  &:hover {
-    background-color: #e6b800;
-  }
-}
-
-/* 기본 스타일은 유지하고 모바일 화면에 맞춰 조정 */
+/* 모바일 대응 */
 @media only screen and (max-width: 768px) {
-  .login-modal {
-    padding: 0;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(0, 0, 0, 0.7);
-  }
-
   .login-modal-content {
     width: 100vw;
     height: auto;
     max-width: 100vw;
     padding: 5vw;
-    background-color: $primary-red;
     box-shadow: none;
-    position: relative; /* 닫기 버튼 위치 조정을 위해 필요 */
+    position: relative;
   }
 
   .login-modal-content-innerbox {
-    padding: 8vw; /* 내부 패딩 줄이기 */
+    padding: 8vw;
     width: 100%;
-    height: auto; /* 높이를 자동으로 설정 */
-    max-height: none; /* 최대 높이 제거 */
+    height: auto;
+    max-height: none;
     display: flex;
     flex-direction: column;
-    align-items: center; /* 내부 요소 중앙 정렬 */
+    align-items: center;
   }
 
-  /* 닫기 버튼 */
-  // .login-close-btn {
-  //   display: block;
-  //   position: absolute;
-  //   top: 1rem;
-  //   right: 1rem;
-  //   background: none;
-  //   border: none;
-  //   font-size: 1.5rem;
-  //   color: $primary-white;
-  //   cursor: pointer;
-  //   z-index: 1100;
-
-  //   &:hover {
-  //     color: #ffcc00;
-  //   }
-  // }
-
   h1 {
-    font-size: 10vw; /* 제목 크기 키움 */
+    font-size: 10vw;
     margin-bottom: 4vw;
-    text-align: center; /* 텍스트 중앙 정렬 */
+    text-align: center;
   }
 
   p {
-    font-size: 6vw; /* 본문 글자 크기 */
+    font-size: 6vw;
     margin-bottom: 4vw;
-    text-align: center; /* 본문 중앙 정렬 */
+    text-align: center;
   }
 
   .login-email-input {
     display: flex;
-    flex-direction: column; /* 세로 정렬 */
-    align-items: center; /* 중앙 정렬 */
+    flex-direction: column;
+    align-items: center;
     width: 100%;
-    text-align: center; /* 입력 필드 및 버튼 중앙 정렬 */
+    text-align: center;
   }
 
   .login-email-input input {
@@ -365,30 +306,19 @@ h4 {
     border-bottom: 1px solid #000;
     background-color: transparent;
     color: $primary-white;
-    text-align: center; /* 중앙 정렬 */
-
+    text-align: center;
     ::placeholder {
       color: #000;
     }
   }
 
-  .sign-up-btn {
+  .sign-up-btn, .sign-in-btn {
     padding: 3vw 8vw;
     font-size: 5vw;
-    background-color: #000;
-    color: #fff;
-    border-radius: 50px;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center; /* 버튼 내용 중앙 정렬 */
-
-    .user-icon {
+    .user-icon, .chat-icon {
       margin-right: 2vw;
       font-size: 5vw;
     }
-
     &:hover {
       background-color: #333;
     }

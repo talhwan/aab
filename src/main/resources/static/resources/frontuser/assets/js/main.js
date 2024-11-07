@@ -108,148 +108,177 @@ window.addEventListener('load', function () {
 
 });
 
+/* 모바일 햄버거 버튼 기능 */
+document.addEventListener('DOMContentLoaded', function () {
+  const menuToggleBtn = document.querySelector('.menu-toggle');
+  const navContainer = document.querySelector('.nav-container');
 
-document.addEventListener('DOMContentLoaded', function() {
-  const openLoginPopupBtn = document.querySelector('.btn-signin');
-  const openSubscribeImage = document.querySelector('.footer-image-container img');
+  // 메뉴 열기/닫기 토글 기능 추가
+  menuToggleBtn.addEventListener('click', function () {
+    navContainer.classList.toggle('active'); // 클래스 토글로 메뉴를 보이거나 숨김
+    menuToggleBtn.classList.toggle('active'); // 햄버거 아이콘 모양도 변경
+  });
+});
+
+
+
+/* 모달 관련 */
+document.addEventListener('DOMContentLoaded', function () {
   const loginModal = document.getElementById('login-modal');
+  const kakaoModal = document.getElementById('kakao-modal');
+  const openLoginPopupBtn = document.querySelector('.btn-signin');
+  const openKakaoPopupBtn = document.querySelector('.social-btn img');
   const closeLoginBtn = document.querySelector('.login-close-btn');
+  const openSubscribeImage = document.querySelector('.footer-image-container img'); // 이미지 선택
+  const openBannerButton = document.querySelector('.banner-button'); // 배너 버튼 선택
+  const openLoginBtn = document.querySelector('.btn-login'); // Log In 버튼 선택
 
-  // 페이지 로드 시 모달이 기본적으로 숨겨진 상태로 시작
-  loginModal.style.display = 'none'; // 혹시 보이는 경우 강제로 숨김
-
-  // 팝업 열기
+  // 팝업 열기 - 로그인 모달 (Sign In 버튼 클릭 시)
   if (openLoginPopupBtn) {
-    openLoginPopupBtn.addEventListener('click', function(event) {
+    openLoginPopupBtn.addEventListener('click', function (event) {
       event.preventDefault();
-      loginModal.style.display = 'flex'; // 모달을 표시
+      loginModal.style.display = 'flex';
+      kakaoModal.style.display = 'none'; // 카카오 모달을 숨김
     });
   }
 
-  // 팝업 열기 (이미지 클릭 시)
+  // 팝업 열기 - 카카오 회원가입 모달
+  if (openKakaoPopupBtn) {
+    openKakaoPopupBtn.addEventListener('click', function (event) {
+      event.preventDefault();
+      kakaoModal.style.display = 'flex';
+      loginModal.style.display = 'none'; // 로그인 모달을 숨김
+    });
+  }
+
+  // 팝업 열기 - 로그인 모달 (구독 이미지 클릭 시)
   if (openSubscribeImage) {
-    openSubscribeImage.addEventListener('click', function(event) {
-      event.preventDefault(); // 기본 이미지 클릭 동작 방지 (필요 시)
-      loginModal.style.display = 'flex'; // 모달을 표시
+    openSubscribeImage.addEventListener('click', function (event) {
+      event.preventDefault(); // 기본 이미지 클릭 동작 방지
+      loginModal.style.display = 'flex'; // 로그인 모달을 표시
+      kakaoModal.style.display = 'none'; // 카카오 모달을 숨김
+    });
+  }
+
+  // 팝업 열기 - 로그인 모달 (배너 버튼 클릭 시)
+  if (openBannerButton) {
+    openBannerButton.addEventListener('click', function (event) {
+      event.preventDefault();
+      loginModal.style.display = 'flex'; // 로그인 모달을 표시
+      kakaoModal.style.display = 'none'; // 카카오 모달을 숨김
+    });
+  }
+
+  // 팝업 열기 - 로그인 모달 (Log In 버튼 클릭 시)
+  if (openLoginBtn) {
+    openLoginBtn.addEventListener('click', function (event) {
+      event.preventDefault();
+      loginModal.style.display = 'flex'; // 로그인 모달을 표시
+      kakaoModal.style.display = 'none'; // 카카오 모달을 숨김
     });
   }
 
   // 팝업 닫기
   if (closeLoginBtn) {
-    closeLoginBtn.addEventListener('click', function() {
-      loginModal.style.display = 'none'; // 모달을 숨김
+    closeLoginBtn.addEventListener('click', function () {
+      loginModal.style.display = 'none';
+      kakaoModal.style.display = 'none';
     });
   }
 
-  // 배경 클릭 시 팝업 닫기
-  loginModal.addEventListener('click', function(event) {
+  // 배경 클릭 시 팝업 닫기 - 로그인 모달
+  loginModal.addEventListener('click', function (event) {
     if (event.target === loginModal) {
-      loginModal.style.display = 'none'; // 모달 닫기
+      loginModal.style.display = 'none';
+    }
+  });
+
+  // 배경 클릭 시 팝업 닫기 - 카카오 모달
+  kakaoModal.addEventListener('click', function (event) {
+    if (event.target === kakaoModal) {
+      kakaoModal.style.display = 'none';
     }
   });
 });
 
-document.addEventListener('DOMContentLoaded', function () {
-  const modalContent = document.getElementById('modal-content-innerbox');
-  const modal = document.getElementById('login-modal');
-  
-  // Sign Up 모드 내용 저장
-  const signUpContent = modalContent.innerHTML;
-
-  // Sign In 모드로 변경할 내용
-  const signInContent = `
-    <h1>COME PLAY PICKLEBALL WITH US</h1>
-    <h2>PICKLEBALL SEOUL OPEN</h2>
-    <h3>가입하여 다음 혜택을 받아보세요!</h3>
-    <ul>
-      <li>대회, 리그 사전 접근</li>
-      <li>다양한 특별할인 및 프로모션 제공</li>
-      <li>최신 피클볼 뉴스 및 콘텐츠</li>
-    </ul>
-    <div class="login-email-input">
-      <input type="email" placeholder="Enter Your E-mail">
-      <button class="sign-in-btn">
-        <img src="/resources/frontuser/assets/images/kakao-icon.png" alt="User icon" class="chat-icon">
-        <span class="divider"></span>
-        <h4>SIGN IN</h4>
-      </button>
-    </div>
-  `;
-
-  // Sign Up -> Sign In 전환
-  const handleSignUpClick = function () {
-    modalContent.innerHTML = signInContent;
-    modal.classList.add('sign-in-active'); // Sign In 스타일 활성화
-    // Sign In 모드에서 다시 Sign Up 모드로 돌아가는 이벤트 리스너를 추가
-    const signInBtn = document.querySelector('.sign-in-btn');
-    signInBtn.addEventListener('click', handleSignInClick);
-  };
-
-  // Sign In -> Sign Up 전환
-  const handleSignInClick = function () {
-    modalContent.innerHTML = signUpContent;
-    modal.classList.remove('sign-in-active'); // Sign In 스타일 제거
-    // Sign Up 모드에서 다시 Sign In 모드로 돌아가는 이벤트 리스너를 추가
-    const signUpBtn = document.querySelector('.sign-up-btn');
-    signUpBtn.addEventListener('click', handleSignUpClick);
-  };
-
-  // 처음 Sign Up -> Sign In 전환 이벤트 리스너 설정
-  const signUpBtn = document.querySelector('.sign-up-btn');
-  signUpBtn.addEventListener('click', handleSignUpClick);
-
-});
 
 
-document.addEventListener('DOMContentLoaded', function() {
-  const menuToggle = document.querySelector('.menu-toggle');
-  const navContainer = document.querySelector('.nav-container');
-
-  menuToggle.addEventListener('click', function() {
-    this.classList.toggle('active');
-    navContainer.classList.toggle('active');
-  });
-});
-
+/* 스크롤 관련 */
 document.addEventListener("DOMContentLoaded", function () {
-  const tournamentListContainer = document.querySelector('.tournament-list-container');
-  const toggleUpButton = document.getElementById("toggleUpButton");
-  const toggleDownButton = document.getElementById("toggleDownButton");
+  const upcomingTournamentListContainer = document.getElementById('upcomingTournamentListContainer');
+  const previousTournamentListContainer = document.getElementById('previousTournamentListContainer');
+  
+  const upcomingToggleDownButton = document.getElementById("upcomingToggleDownButton");
+  const previousToggleDownButton = document.getElementById("previousToggleDownButton");
 
-  // 스크롤 다운 버튼 클릭
-  toggleDownButton.addEventListener("click", function () {
-    tournamentListContainer.scrollBy({
-      top: 150, // Amount to scroll down
-      behavior: "smooth"
+  let autoScrollInterval;
+  let isAutoScrolling = true;
+
+  // 자동 스크롤 함수
+  function startAutoScroll(container) {
+    return setInterval(() => {
+      container.scrollBy({
+        top: 300, // 한번에 스크롤할 픽셀 양
+        behavior: 'smooth'
+      });
+
+      // 스크롤이 맨 끝에 도달했는지 확인하고, 도달하면 다시 위로 이동
+      if (container.scrollTop + container.clientHeight >= container.scrollHeight) {
+        container.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      }
+    }, 2000); // 2초마다 스크롤
+  }
+
+  // 자동 스크롤 시작
+  let upcomingAutoScroll = startAutoScroll(upcomingTournamentListContainer);
+  let previousAutoScroll = startAutoScroll(previousTournamentListContainer);
+
+  // 사용자가 스크롤할 때 자동 스크롤을 중단하는 이벤트 리스너
+  function addManualScrollListener(container, autoScrollVariable) {
+    container.addEventListener('scroll', function () {
+      clearInterval(autoScrollVariable);
+      isAutoScrolling = false;
+
+      // 사용자가 스크롤을 중단하면 일정 시간 후 자동 스크롤 재개
+      setTimeout(() => {
+        if (!isAutoScrolling) {
+          autoScrollVariable = startAutoScroll(container);
+          isAutoScrolling = true;
+        }
+      }, 3000); // 3초 후 자동 스크롤 재개
     });
-  });
+  }
 
-  // 스크롤 업 버튼 클릭
-  toggleUpButton.addEventListener("click", function () {
-    tournamentListContainer.scrollBy({
-      top: -150, // Amount to scroll up
-      behavior: "smooth"
+  // 수동 스크롤 이벤트 리스너 추가
+  addManualScrollListener(upcomingTournamentListContainer, upcomingAutoScroll);
+  addManualScrollListener(previousTournamentListContainer, previousAutoScroll);
+
+  // 수동으로 아래로 스크롤 버튼 클릭 시
+  function addButtonScrollListener(button, container, autoScrollVariable) {
+    button.addEventListener("click", function () {
+      container.scrollBy({
+        top: 300, // 수동 스크롤할 양
+        behavior: 'smooth'
+      });
+
+      // 버튼 클릭 시에도 자동 스크롤 중단
+      clearInterval(autoScrollVariable);
+      isAutoScrolling = false;
+
+      // 3초 후 자동 스크롤 재개
+      setTimeout(() => {
+        if (!isAutoScrolling) {
+          autoScrollVariable = startAutoScroll(container);
+          isAutoScrolling = true;
+        }
+      }, 3000);
     });
-  });
+  }
 
-  // 스크롤 이벤트
-  tournamentListContainer.addEventListener('scroll', function () {
-    const scrollTop = tournamentListContainer.scrollTop;
-    const scrollHeight = tournamentListContainer.scrollHeight;
-    const clientHeight = tournamentListContainer.clientHeight;
-
-    // 스크롤이 끝에 도달했을 때 Down 버튼 숨기기
-    if (Math.ceil(scrollTop + clientHeight) >= scrollHeight) {
-      toggleDownButton.style.display = "none";
-    } else {
-      toggleDownButton.style.display = "block";
-    }
-
-    // 스크롤이 상단을 벗어났을 때 Up 버튼 보이기
-    if (scrollTop > 0) {
-      toggleUpButton.style.display = "block";
-    } else {
-      toggleUpButton.style.display = "none";
-    }
-  });
+  // 버튼 이벤트 리스너 추가
+  addButtonScrollListener(upcomingToggleDownButton, upcomingTournamentListContainer, upcomingAutoScroll);
+  addButtonScrollListener(previousToggleDownButton, previousTournamentListContainer, previousAutoScroll);
 });

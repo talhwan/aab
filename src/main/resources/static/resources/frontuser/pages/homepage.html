@@ -16,7 +16,6 @@
   <header class="main-header">
     <div class="logo-container">
       <img src="../assets/images/AAB_logo.png" alt="AAB Logo" class="logo">
-      <span class="logo-text">PICKLEBALL</span>
     </div>
     <button class="menu-toggle" aria-label="Toggle menu">
       <span></span>
@@ -36,6 +35,9 @@
       </nav>
       <div class="social-buttons">
         <a href="#" class="btn-signin">Sign In</a>
+        <a href="#" class="social-btn">
+          <img src="../assets/images/kakao-white-icon.png" alt="kakao">
+        </a>
         <a href="https://facebook.com" class="social-btn">
           <img src="../assets/images/facebook-icon.png" alt="Facebook">
         </a>
@@ -64,22 +66,17 @@
 
 <!-- 섹션 2 - 토너먼트 정보 -->
 <section class="home-tournaments-section">
+
+  <!--Upcoming Tournaments -->
   <h2 class="home-section-title">Upcoming Tournaments</h2>
-
-    <!-- Up Arrow Button -->
-    <button id="toggleUpButton" class="toggle-button">
-      <span class="arrow-up">&#9650;</span>
-    </button>
-
-  <div class="tournament-list-container">
+  <div class="tournament-list-container" id="upcomingTournamentListContainer">
     <div class="tournament-list" id="tournamentList">
-
       <div class="home-tournament-item home-upcoming">
         <img src="../assets/images/SeoulOpen_black.png" alt="Seoul Open Logo" class="home-tournament-logo">
         <div class="home-tournament-details">
-          <h3>October 03-06, 2024</h3>
+          <h3>October 03 <span class="special-char">-</span> 06<span class="special-char">.</span> 2024</h3>
           <p class="home-tournament-name">BALLIN SEOUL OPEN</p>
-          <p class="home-tournament-location">AAB Park @ Banyan Tree Club and Spa Seoul</p>
+          <p class="home-tournament-location">AAB Park <span class="special-char-bold">@</span> Banyan Tree Club and Spa Seoul</p>
         </div>
       </div>
 
@@ -87,27 +84,39 @@
         <p>COMING SOON IN 2025</p>
       </div>
 
-      <div class="home-tournament-coming-soon">
-        <p>COMING SOON IN 2025</p>
-      </div>
     </div>
   </div>
 
   <!-- Down Arrow Button -->
-  <button id="toggleDownButton" class="toggle-button">
-    <span class="arrow-down">&#9660;</span>
-  </button>
+  <button class="toggle-button"><img src="../assets/images/arrow-down-icon.png"></button>
 
+
+  <!--Previous Tournaments -->
   <h2 class="home-section-title">Previous Tournaments</h2>
 
-  <div class="home-tournament-item home-previous">
-    <img src="../assets/images/PSO_black_logo.png" alt="Pickleball Seoul Open Logo" class="home-tournament-logo">
-    <div class="home-tournament-details">
-      <h3>October 26-29, 2023</h3>
-      <p class="home-tournament-name">PICKLEBALL SEOUL OPEN</p>
-      <p class="home-tournament-location">AAB Park @ Banyan Tree Club and Spa Seoul</p>
+  <div class="tournament-list-container" id="previousTournamentListContainer">
+    <div class="tournament-list" id="previousTournamentList">
+      <div class="home-tournament-item home-previous">
+        <img src="../assets/images/PSO_black_logo.png" alt="Pickleball Seoul Open Logo" class="home-tournament-logo">
+        <div class="home-tournament-details">
+          <h3>October 26 <span class="special-char">-</span> 29<span class="special-char">.</span> 2023</h3>
+          <p class="home-tournament-name">PICKLEBALL SEOUL OPEN</p>
+          <p class="home-tournament-location">AAB Park <span class="special-char-bold">@</span> Banyan Tree Club and Spa Seoul</p>
+        </div>
+      </div>
+
+      <!-- <div class="home-tournament-coming-soon">
+        <p>COMING SOON IN 2025</p>
+      </div> -->
+
     </div>
   </div>
+
+  <!-- Down Arrow Button
+  <button id="previousToggleDownButton" class="toggle-button">
+    <span class="arrow-down">&#9660;</span>
+  </button> -->
+
 </section>
 
     <!-- 섹션 3 - Instagram 썸네일 피드 -->
@@ -158,15 +167,15 @@
       <h2 class="section-title">Featured News</h2>
 
       <div class="carousel-container">
-        <button class="prev-btn">&lt;</button>
+        <button class="prevB"><img src="../assets/images/arrow-left-icon.png"></button>
 
         <div class="carousel">
           <!-- 뉴스 카드 1 -->
           <a href="https://pickleball.com/news/rettenmaiers-comments-on-black-bears-cheating-raise-larger-questions-about-pickleballs-future" target="_blank" class="news-card">
             <img src="../assets/images/news/Pickleball_news1.png" alt="News 1">
             <div class="news-card-p">
-              <h3>RETENMAIER'S COMMENTS ON BLACK BEARS, CHEATING RAISE LARGER QUESTIONS ABOUT PICKLEBALL'S FUTURE</h3>
-              <p>GRAND RAPIDS, MI - The sun has officially set on the MLP Mid-Season Tournament...</p>
+              <h3 class="special-char">RETENMAIER'S COMMENTS ON BLACK BEARS, CHEATING RAISE LARGER QUESTIONS ABOUT PICKLEBALL'S FUTURE</h3>
+              <p class="at-symbol-apple">GRAND RAPIDS, MI - The sun has officially set on the MLP Mid-Season Tournament, with the New Jersey 5s and Brooklyn Aces capturing Premier ...</p>
             </div>
           </a>
 
@@ -174,8 +183,8 @@
           <a href="https://pickleball.com/news/video-game-ppa-pickleball-tour-2025-coming-to-xbox-playstation-steam-on-july-17" target="_blank" class="news-card">
             <img src="../assets/images/news/Pickleball_news2.png" alt="News 2">
             <div class="news-card-p">
-              <h3>VIDEO GAME: PPA PICKLEBALL TOUR 2025 COMING TO XBOX, PLAYSTATION, STEAM ON JULY 17</h3>
-              <p>Pickleball is about to enter the digital world with the PPA Pickleball Tour 2025...</p>
+              <h3 class="special-char">VIDEO GAME: PPA PICKLEBALL TOUR 2025 COMING TO XBOX, PLAYSTATION, STEAM ON JULY 17</h3>
+              <p class="at-symbol-apple">On Wednesday, July 17, the first-ever pro pickleball video game - PPA Pickleball Tour 2025 - will officially be released for Xbox, PlayStation and Steam....</p>
             </div>
           </a>
 
@@ -183,8 +192,8 @@
           <a href="https://pickleball.com/news/preview-of-hertz-mlp-new-york-city-premier-matches" target="_blank" class="news-card">
             <img src="../assets/images/news/Pickleball_news3.png" alt="News 3">
             <div class="news-card-p">
-              <h3>PREVIEW OF HERTZ MLP NEW YORK CITY PREMIER MATCHES</h3>
-              <p>A sneak peek at the exciting upcoming matches in New York City for the Hertz MLP...</p>
+              <h3 class="special-char">PREVIEW OF HERTZ MLP NEW YORK CITY PREMIER MATCHES</h3>
+              <p class="at-symbol-apple">MLP comes to the Big Apple this week for the first time. It will be the Hertz New York City event, with six of the twelve Premier level teams in action....</p>
             </div>
           </a>
 
@@ -192,13 +201,13 @@
           <a href="https://pickleball.com/news/preview-of-hertz-mlp-new-york-city-premier-matches" target="_blank" class="news-card">
             <img src="../assets/images/news/Pickleball_news3.png" alt="News 4">
             <div class="news-card-p">
-              <h3>PREVIEW OF HERTZ MLP NEW YORK CITY PREMIER MATCHES</h3>
-              <p>A sneak peek at the exciting upcoming matches in New York City for the Hertz MLP...</p>
+              <h3 class="special-char">PREVIEW OF HERTZ MLP NEW YORK CITY PREMIER MATCHES</h3>
+              <p class="at-symbol-apple">MLP comes to the Big Apple this week for the first time. It will be the Hertz New York City event, with six of the twelve Premier level teams in action....</p>
             </div>
           </a>
         </div>
 
-        <button class="next-btn">&gt;</button>
+        <button class="nextB"><img src="../assets/images/arrow-right-icon.png"></button>
       </div>
     </section>
 
@@ -220,7 +229,6 @@
       <!-- 로고 -->
       <div class="footer-logo-container">
         <img src="../assets/images/AAB_logo.png" alt="AAB Pickleball" class="footer-logo">
-        <span class="footer-logo-text">PICKLEBALL</span>
       </div>
       <!-- 소셜미디어 아이콘 -->
       <div class="footer-logo-social">
@@ -235,15 +243,15 @@
             <img src="../assets/images/youtube-icon.png" alt="YouTube">
           </a>
         </div>
-        <a href="login.html" class="btn-login">Log In</a>
+        <a href="#" class="btn-login">Log In</a>
       </div>
     </div>
       
     <!-- 회사 정보 -->
     <div class="company-info">
-      <p>주식회사 그린라이트그룹<br>사업자 등록번호 883-88-01979<br>대표이사 김용각, 황규진</p>
+      <p>주식회사 그린라이트그룹<br>사업자 등록번호 883-88-01979<br>대표이사 황규진, 이종민</p>
       <p>서울특별시 서초구 강남대로 37길 49<br>451호 (서초동, 애서니움 빌딩)<br>대표전화 02.6001.6947</p>
-      <p>개인정보관리책임자 이창석<br>michael.lee@montissports.com</p>
+      <p>개인정보관리책임자 이창석<br>Michael@greenlightgroup.co.kr</p>
     </div>
   
     <!-- 구독 신청 박스 -->
@@ -254,26 +262,49 @@
   </footer>
 
 
-  <!-- Login Modal -->
-  <div id="login-modal" class="login-modal hidden">
-    <div class="login-modal-content">
-      <!-- <button class="login-close-btn">&times;</button> -->
-      <div id="modal-content-innerbox" class="login-modal-content-innerbox">
-        <h1>STAY IN THE KNOW...</h1>
-        <p>SIGN UP TO BE AMONG THE FIRST TO KNOW ABOUT UPCOMING EVENTS, PROMOTIONS, GIVEAWAYS, NEWS, AND MORE...</p>
-  
-        <!-- 이메일 입력 -->
-        <div class="login-email-input">
-          <input type="email" placeholder="Enter Your E-mail">
-          <button class="sign-up-btn">
-            <img src="../assets/images/add-user.png" alt="User icon" class="user-icon">
-            <span class="divider"></span>
-            <h4>SIGN UP</h4>
-          </button>
-        </div>
+<!-- 로그인 모달 -->
+<div id="login-modal" class="login-modal hidden">
+  <div class="login-modal-content">
+    <div id="login-modal-innerbox" class="login-modal-content-innerbox">
+      <h1>STAY IN THE KNOW...</h1>
+      <p class="special-char-lighter">SIGN UP TO BE AMONG THE FIRST TO KNOW ABOUT UPCOMING EVENTS, PROMOTIONS, GIVEAWAYS, NEWS, AND MORE...</p>
+      <div class="login-email-input">
+        <input type="email" placeholder="Enter Your E-mail">
+        <button class="sign-up-btn">
+          <img src="../assets/images/add-user.png" alt="User icon" class="user-icon">
+          <span class="divider"></span>
+          <h4>SIGN UP</h4>
+        </button>
       </div>
     </div>
   </div>
+</div>
+
+<!-- 카카오 회원가입 모달 -->
+<div id="kakao-modal" class="login-modal hidden">
+  <div class="login-modal-content">
+    <div id="kakao-modal-innerbox" class="login-modal-content-innerbox">
+      <h1>COME PLAY PICKLEBALL WITH US</h1>
+      <h2>PICKLEBALL SEOUL OPEN</h2>
+      <h3 class="special-char-lighter">가입하여 다음 혜택을 받아보세요!</h3>
+      <ul>
+        <li>대회, 리그 사전 접근</li>
+        <li>다양한 특별할인 및 프로모션 제공</li>
+        <li>최신 피클볼 뉴스 및 콘텐츠</li>
+      </ul>
+      <div class="login-email-input">
+        <input type="email" placeholder="Enter Your E-mail">
+        <button class="sign-in-btn">
+          <img src="../assets/images/kakao-icon.png" alt="User icon" class="chat-icon">
+          <span class="divider"></span>
+          <h4>SIGN IN</h4>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
   
 
   <script src="../assets/js/main.js"></script>

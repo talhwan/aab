@@ -23,12 +23,6 @@
   height: 4.5vw;
   margin-bottom: 0.1vw;
 }
-.main-header .logo-container .logo-text {
-  color: #EF283D;
-  font-size: 1vw;
-  font-weight: bold;
-  text-align: center;
-}
 .main-header .menu-toggle {
   display: none;
 }
@@ -56,6 +50,7 @@
   text-decoration: none;
   position: relative;
   font-size: 1.5vw;
+  font-weight: lighter;
 }
 .main-header .nav-menu ul li .nav-link.active {
   color: #EF283D;
@@ -228,12 +223,6 @@
   height: 6.5vw; /* 로고의 높이를 vw로 변경 */
   margin-bottom: 0.1vw; /* 로고와 텍스트 사이의 간격을 vw로 변경 */
 }
-.main-footer .footer-logo-container .footer-logo-text {
-  color: #EF283D;
-  font-size: 1.5vw; /* 텍스트 크기를 vw 단위로 변경 */
-  font-weight: bold;
-  text-align: center;
-}
 .main-footer .footer-logo-social {
   margin-top: 1vw;
   text-align: center;
@@ -298,7 +287,7 @@
     display: none;
   }
 }
-/* 기본 모달 스타일 */
+/* 공통 모달 스타일 */
 .login-modal {
   position: fixed;
   top: 0;
@@ -313,19 +302,30 @@
 }
 
 .login-modal-content {
-  background-color: #EF283D;
   padding: 1rem;
   width: 90%;
-  height: 550px;
+  height: 570px;
   max-width: 450px;
-  color: #FFFFFF;
   display: flex;
   justify-content: center; /* 가로축 중앙 정렬 */
   align-items: flex-start; /* 세로축 중앙 정렬 */
   box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3); /* 그림자 추가 */
 }
 
-/* 닫기 버튼 스타일 - 기본적으로 숨김 */
+/* 모달 내부 박스 공통 스타일 */
+.login-modal-content-innerbox {
+  padding: 4.5rem;
+  max-width: 400px;
+  height: 100%;
+  max-height: 420px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  border: 1px solid #FFFFFF; /* 하얀색 테두리 추가 */
+}
+
+/* 닫기 버튼 */
 .login-close-btn {
   display: none;
   position: absolute;
@@ -339,98 +339,60 @@
   transition: color 0.3s ease;
 }
 .login-close-btn:hover {
-  color: #ffcc00; /* 닫기 버튼 호버 시 색상 변경 */
+  color: #ffcc00;
 }
 
-.login-modal-content-innerbox {
-  border: 1px solid #FFFFFF; /* 하얀색 테두리 추가 */
-  padding: 4rem; /* 고정된 내부 패딩 */
-  padding-left: 5rem;
-  width: 100%; /* 컨테이너 너비 고정 */
-  max-width: 400px; /* 너비 최대값 설정 */
-  height: 100%; /* 컨테이너 높이 고정 */
-  max-height: 420px; /* 높이 최대값 설정 */
+/* 공통 버튼 스타일 */
+.sign-up-btn, .sign-in-btn {
+  margin-top: 1.5rem;
   display: flex;
-  flex-direction: column; /* 세로로 정렬 */
-  justify-content: center; /* 가로축 중앙 정렬 */
-  align-items: flex-start; /* 가로축 중앙 정렬 */
-}
-
-h1 {
-  color: #010101;
-  font-size: 2.8rem; /* 반응형 제목 크기 */
-  font-weight: bold;
-  text-align: left;
-  padding-bottom: 0;
-  margin-bottom: 0;
-}
-
-p {
-  font-size: 1.3rem;
-  font-family: "Bebas Neue", sans-serif;
-  line-height: 1.5;
-  margin-bottom: 1.5rem;
-  text-align: left;
-  padding-top: 0;
-  margin-top: 0;
-}
-
-h2 {
-  margin-bottom: 0;
-}
-
-h3 {
-  margin: 0.5rem;
-  margin-left: 0;
-  padding: 0;
-  font-size: 1rem;
-  font-weight: 400;
-  font-family: "Bebas Neue", sans-serif;
-}
-
-ul {
-  margin: 0;
-  padding: 0;
-  margin-bottom: 1rem;
-  margin-left: 1rem;
-}
-
-li {
-  font-size: 0.6rem;
-  margin-bottom: 0.3rem;
-  color: #FFFFFF;
-}
-
-h4 {
-  font-family: "Academic M54", sans-serif;
-  margin: 0;
-  padding: 0;
-  font-size: 1rem;
-  padding-right: 3rem;
-  padding-left: 3rem;
-  color: #fff;
-}
-
-.login-email-input {
   align-items: center;
-  margin-bottom: 2rem;
-}
-.login-email-input input {
-  flex: 1;
-  padding: 0.5rem;
-  font-size: 0.7rem;
+  justify-content: center;
   border: none;
-  outline: none;
-  color: #FFFFFF; /* 글자 색상을 흰색으로 설정 */
-  font-style: italic; /* 글자를 기울여서 표시 */
-  border-bottom: 1px solid #000000; /* 검은색 아래 테두리 */
+  border-radius: 50px;
+  padding: 0.2rem 5rem;
+  padding-left: 2rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.sign-up-btn .divider, .sign-in-btn .divider {
+  width: 1px;
+  height: 1.4rem;
+  background-color: #fff;
+  margin-right: 1rem;
+  margin-right: 4rem;
+}
+.sign-up-btn .user-icon, .sign-up-btn .chat-icon, .sign-in-btn .user-icon, .sign-in-btn .chat-icon {
+  width: 1.1rem; /* 아이콘 크기 */
+  height: 1.1rem;
+  margin-right: 1rem;
+}
+.sign-up-btn h4, .sign-in-btn h4 {
+  margin: 0; /* h4의 마진 제거 */
+  padding: 0; /* h4의 패딩 제거 */
+}
+
+/* 이메일 입력 필드 스타일 */
+.login-email-input input {
+  width: 100%; /* 가로 길이를 100%로 설정 */
+  padding: 0.5rem 0; /* 위아래 패딩 */
+  font-size: 1rem;
+  border: none; /* 기본 테두리 제거 */
+  border-bottom: 1px solid #000; /* 아래쪽 테두리만 검은색 */
   background-color: transparent; /* 배경 투명하게 설정 */
-  padding-right: 8rem;
+  color: #000; /* 글자 색상 */
+  font-style: italic; /* 글자를 기울여서 표시 */
 }
 .login-email-input input ::placeholder {
-  color: #000000 !important; /* Placeholder의 색상을 검정으로 설정 */
-  opacity: 1; /* 투명도 조정 */
+  color: #000; /* Placeholder의 색상을 검정으로 설정 */
   font-style: italic; /* Placeholder 글자를 기울여서 표시 */
+  opacity: 1; /* 투명도 설정 */
+}
+.login-email-input input:focus {
+  outline: none; /* 포커스 시 기본 외곽선 제거 */
+  border-bottom: 2px solid #000; /* 포커스 시 테두리 두께 증가 */
 }
 .login-email-input input::-webkit-input-placeholder {
   color: #000000 !important;
@@ -447,168 +409,150 @@ h4 {
   opacity: 1 !important;
   font-style: italic !important;
 }
-.login-email-input .sign-up-btn {
-  margin-top: 1.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #000;
-  color: #fff;
-  border: none;
-  border-radius: 50px;
-  padding: 0.5rem 1.8rem;
-  font-size: 1.2rem;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-.login-email-input .sign-up-btn .user-icon {
-  width: 1.2rem; /* 아이콘 크기 반응형으로 설정 */
-  height: 1.2rem;
-  margin-right: 1rem;
-}
-.login-email-input .sign-up-btn .divider {
-  width: 1px;
-  height: 1.5rem;
-  background-color: #fff;
-  margin-right: 1rem;
-}
-.login-email-input .sign-up-btn p {
-  margin: 0;
-  padding: 0;
-  font-size: 1rem;
-  font-weight: inherit;
-  line-height: 1;
-  padding-right: 3rem;
-  padding-left: 3rem;
-}
-.login-email-input .sign-up-btn:hover {
-  background-color: #333;
-}
 
 /* 숨김 클래스 */
 .hidden {
   display: none;
 }
 
-/* Sign In 상태로 전환되었을 때 */
-.sign-in-active .login-email-input input {
-  border-bottom: 1px solid #FFFFFF; /* Sign In 모드에서 아래 테두리를 흰색으로 변경 */
+/* 로그인 모달 전용 스타일 */
+#login-modal .login-modal-content {
+  background-color: #EF283D; /* 배경색 빨간색 */
+  color: #FFFFFF;
 }
-.sign-in-active .login-email-input input ::placeholder {
-  color: #FFFFFF !important; /* Placeholder 색상을 흰색으로 변경 */
-}
-.sign-in-active .login-email-input input::-webkit-input-placeholder {
-  color: #FFFFFF !important;
-}
-.sign-in-active .login-email-input input::-moz-placeholder {
-  color: #FFFFFF !important;
-}
-.sign-in-active .login-email-input input:-ms-input-placeholder {
-  color: #FFFFFF !important;
-}
-
-.sign-in-active .login-modal-content {
-  background-color: #000; /* Sign In 모드에서 배경 검정색 */
-}
-
-.sign-in-active h1 {
-  color: #EF283D;
-}
-
-.sign-in-active p {
-  color: #fff; /* Sign In 모드에서 글자색 흰색 */
-}
-
-.sign-in-active .sign-up-btn {
-  background-color: #ffcc00; /* Sign In 버튼 배경 노란색 */
-  color: #000;
-}
-.sign-in-active .sign-up-btn:hover {
-  background-color: #e6b800; /* 호버 시 배경색 */
-}
-
-.sign-in-btn {
-  margin-top: 1.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #ffcc00;
-  color: #000;
-  border: none;
-  border-radius: 50px;
-  padding: 0.5rem 1.8rem;
-  font-size: 1.2rem;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-.sign-in-btn .chat-icon {
-  width: 1.2rem; /* 아이콘 크기 반응형으로 설정 */
-  height: 1.2rem;
-  margin-right: 1rem;
-}
-.sign-in-btn .divider {
-  width: 1px;
-  height: 1.5rem;
-  background-color: #000;
-  margin-right: 1rem;
-}
-.sign-in-btn h4 {
+#login-modal h1 {
+  color: #010101;
+  font-size: 3rem;
   margin: 0;
-  padding: 0;
-  font-size: 1rem;
-  padding-right: 3rem;
-  padding-left: 3rem;
-  color: #000;
 }
-.sign-in-btn:hover {
-  background-color: #e6b800;
+#login-modal p {
+  color: #FFFFFF;
+  font-size: 1.5rem;
+  margin: 0;
+  margin-top: 1rem;
+}
+#login-modal .login-email-input input {
+  margin-top: 4rem;
+}
+#login-modal .sign-up-btn {
+  background-color: #000;
+  color: #fff;
+}
+#login-modal .sign-up-btn:hover {
+  background-color: #333;
 }
 
-/* 기본 스타일은 유지하고 모바일 화면에 맞춰 조정 */
+/* 카카오 회원가입 모달 전용 스타일 */
+#kakao-modal {
+  /* 이메일 입력 필드 스타일 */
+}
+#kakao-modal .login-modal-content {
+  background-color: #000; /* 배경색 검정 */
+  color: #010101;
+}
+#kakao-modal h1 {
+  color: #EF283D;
+  font-size: 2.6rem;
+  margin: 0;
+  margin-bottom: 1rem;
+}
+#kakao-modal h2 {
+  color: #FFFFFF;
+  margin: 0;
+}
+#kakao-modal h3 {
+  color: #FFFFFF;
+  margin: 0;
+  margin-top: 0.2rem;
+  font-size: 1rem;
+}
+#kakao-modal ul {
+  color: #FFFFFF;
+  font-size: 0.7rem;
+  padding-left: 0; /* 기본적으로 ul에 적용된 패딩을 없앰 */
+  margin-left: 0; /* 기본적으로 ul에 적용된 마진을 없앰 */
+  list-style-position: inside; /* 리스트 아이콘을 내부에 표시 */
+  margin-bottom: 2rem;
+}
+#kakao-modal p, #kakao-modal h4 {
+  color: #010101;
+}
+#kakao-modal .sign-in-btn {
+  background-color: #F9E200;
+}
+#kakao-modal .sign-in-btn:hover {
+  background-color: #ffcc00;
+}
+#kakao-modal .login-email-input input {
+  width: 100%; /* 가로 길이를 100%로 설정 */
+  padding: 0.5rem 0; /* 위아래 패딩 */
+  font-size: 1rem;
+  border: none; /* 기본 테두리 제거 */
+  border-bottom: 1px solid #fff; /* 아래쪽 테두리만 검은색 */
+  background-color: transparent; /* 배경 투명하게 설정 */
+  color: #fff; /* 글자 색상 */
+  font-style: italic; /* 글자를 기울여서 표시 */
+}
+#kakao-modal .login-email-input input ::placeholder {
+  color: #fff; /* Placeholder의 색상을 검정으로 설정 */
+  font-style: italic; /* Placeholder 글자를 기울여서 표시 */
+  opacity: 1; /* 투명도 설정 */
+}
+#kakao-modal .login-email-input input:focus {
+  outline: none; /* 포커스 시 기본 외곽선 제거 */
+  border-bottom: 2px solid #fff; /* 포커스 시 테두리 두께 증가 */
+}
+#kakao-modal .login-email-input input::-webkit-input-placeholder {
+  color: #fff !important;
+  opacity: 1 !important;
+  font-style: italic !important;
+}
+#kakao-modal .login-email-input input::-moz-placeholder {
+  color: #fff !important;
+  opacity: 1 !important;
+  font-style: italic !important;
+}
+#kakao-modal .login-email-input input:-ms-input-placeholder {
+  color: #fff !important;
+  opacity: 1 !important;
+  font-style: italic !important;
+}
+
+/* 모바일 대응 */
 @media only screen and (max-width: 768px) {
-  .login-modal {
-    padding: 0;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(0, 0, 0, 0.7);
-  }
   .login-modal-content {
     width: 100vw;
     height: auto;
     max-width: 100vw;
     padding: 5vw;
-    background-color: #EF283D;
     box-shadow: none;
-    position: relative; /* 닫기 버튼 위치 조정을 위해 필요 */
+    position: relative;
   }
   .login-modal-content-innerbox {
-    padding: 8vw; /* 내부 패딩 줄이기 */
+    padding: 8vw;
     width: 100%;
-    height: auto; /* 높이를 자동으로 설정 */
-    max-height: none; /* 최대 높이 제거 */
+    height: auto;
+    max-height: none;
     display: flex;
     flex-direction: column;
-    align-items: center; /* 내부 요소 중앙 정렬 */
+    align-items: center;
   }
-  /* 닫기 버튼 */
   h1 {
-    font-size: 10vw; /* 제목 크기 키움 */
+    font-size: 10vw;
     margin-bottom: 4vw;
-    text-align: center; /* 텍스트 중앙 정렬 */
+    text-align: center;
   }
   p {
-    font-size: 6vw; /* 본문 글자 크기 */
+    font-size: 6vw;
     margin-bottom: 4vw;
-    text-align: center; /* 본문 중앙 정렬 */
+    text-align: center;
   }
   .login-email-input {
     display: flex;
-    flex-direction: column; /* 세로 정렬 */
-    align-items: center; /* 중앙 정렬 */
+    flex-direction: column;
+    align-items: center;
     width: 100%;
-    text-align: center; /* 입력 필드 및 버튼 중앙 정렬 */
+    text-align: center;
   }
   .login-email-input input {
     font-size: 4vw;
@@ -618,28 +562,20 @@ h4 {
     border-bottom: 1px solid #000;
     background-color: transparent;
     color: #FFFFFF;
-    text-align: center; /* 중앙 정렬 */
+    text-align: center;
   }
   .login-email-input input ::placeholder {
     color: #000;
   }
-  .sign-up-btn {
+  .sign-up-btn, .sign-in-btn {
     padding: 3vw 8vw;
     font-size: 5vw;
-    background-color: #000;
-    color: #fff;
-    border-radius: 50px;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center; /* 버튼 내용 중앙 정렬 */
   }
-  .sign-up-btn .user-icon {
+  .sign-up-btn .user-icon, .sign-up-btn .chat-icon, .sign-in-btn .user-icon, .sign-in-btn .chat-icon {
     margin-right: 2vw;
     font-size: 5vw;
   }
-  .sign-up-btn:hover {
+  .sign-up-btn:hover, .sign-in-btn:hover {
     background-color: #333;
   }
   .divider {
@@ -654,6 +590,8 @@ h4 {
   background-color: #010101;
   color: #FFFFFF;
   position: relative;
+  margin-left: 10%;
+  margin-right: 10%;
 }
 .tournament-section .tournament-logo-section {
   display: flex;
@@ -664,12 +602,11 @@ h4 {
   justify-content: flex-end;
   width: 50vw;
   padding-top: 5vw;
-  padding-right: 5vw;
 }
 .tournament-section .tournament-content {
   bottom: 30vw;
-  left: 2vw;
   padding: 2vw;
+  padding-left: 0;
   padding-top: 0;
   margin: 0;
 }
@@ -741,8 +678,8 @@ h4 {
   background-color: #EF283D;
   padding: 1vw 2vw; /* 좌우 여백 추가 */
   padding-bottom: 2vw;
-  padding-left: 7vw;
-  padding-right: 7vw;
+  padding-left: 10%;
+  padding-right: 10%;
 }
 .section-2 .section-2-header .back-link {
   color: black; /* 텍스트 색상 */
@@ -809,17 +746,17 @@ h4 {
 .section-2 .tab-content .details .detail-item span {
   display: block;
   font-size: 2vw;
-  margin-bottom: 0.5vw;
   color: #010101;
   margin-top: 1.5vw;
 }
 .section-2 .tab-content .details .detail-item p {
-  font-size: 1.5vw;
+  font-size: 1.8vw;
   color: #010101;
+  margin-top: 1.2vw;
 }
 .section-2 .tab-content .details .icon {
-  width: 2.5vw; /* 아이콘 크기 */
-  height: 2.5vw; /* 아이콘 크기 */
+  width: 3vw; /* 아이콘 크기 */
+  height: 3vw; /* 아이콘 크기 */
 }
 .section-2 .tab-content .detail-item-mobile {
   display: none;
@@ -941,19 +878,22 @@ h4 {
   padding: 0; /* 패딩 제거 */
   margin: 0; /* 마진 제거 */
   display: block;
+  object-fit: cover; /* 이미지가 찌그러지지 않고 자르도록 설정 */
 }
 .section-2 .tab-content .prevB, .section-2 .tab-content .nextB {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background-color: #EF283D; /* 버튼 색상 */
-  color: #FFFFFF;
   border: none;
-  padding: 0.5vw;
-  font-size: 2vw;
+  background-color: transparent;
   cursor: pointer;
   z-index: 2;
-  border-radius: 50%;
+}
+.section-2 .tab-content .prevB img, .section-2 .tab-content .nextB img {
+  position: relative;
+  width: 2vw;
+  height: 2vw;
+  padding-right: 0.2vw;
 }
 .section-2 .tab-content .prevB {
   left: -4vw;
@@ -1330,16 +1270,16 @@ h4 {
 }
 .home-tournaments-section .home-section-title {
   text-align: center;
-  font-size: 2vw;
+  font-size: 3vw;
   color: #010101;
   margin-bottom: 2vw;
   background-color: #010101;
   color: #FFFFFF;
-  padding: 1vw;
+  padding: 0.5vw;
   text-transform: uppercase;
 }
 .home-tournaments-section .tournament-list-container {
-  max-height: 35vw;
+  max-height: 40vw;
   overflow-y: scroll; /* Enable vertical scroll */
   scroll-behavior: smooth;
 }
@@ -1350,9 +1290,9 @@ h4 {
 }
 .home-tournaments-section .home-tournament-coming-soon {
   background-color: #F6F2E6;
-  padding: 5vw;
+  padding: 2vw;
   text-align: center;
-  font-size: 1.8vw;
+  font-size: 4.5vw;
   color: #7A7A74;
   margin-bottom: 1vw;
 }
@@ -1360,7 +1300,7 @@ h4 {
   display: flex;
   align-items: center;
   background-color: #FFFFFF;
-  padding: 1vw;
+  padding: 1.5vw;
   margin-bottom: 1vw;
   box-shadow: 0 0.5vw 1vw rgba(0, 0, 0, 0.1);
   position: relative;
@@ -1372,7 +1312,7 @@ h4 {
   top: 0;
   bottom: 0;
   left: 0;
-  width: 25.5vw;
+  width: 28vw;
   height: 100%;
   clip-path: polygon(0 0, 91% 0, 100% 100%, 0 100%);
   z-index: 0;
@@ -1392,17 +1332,18 @@ h4 {
 }
 .home-tournaments-section .home-tournament-item .home-tournament-details {
   z-index: 1;
-  margin-left: 2.5vw;
+  margin-left: 6vw;
 }
 .home-tournaments-section .home-tournament-item .home-tournament-details h3 {
   font-size: 2.2vw;
   margin-bottom: 0;
+  padding: 0;
 }
 .home-tournaments-section .home-tournament-item .home-tournament-details .home-tournament-name {
   font-size: 4vw;
   color: #EF283D;
   font-weight: bold;
-  margin-bottom: 0;
+  margin: 0;
 }
 .home-tournaments-section .home-tournament-item .home-tournament-details .home-tournament-location {
   font-size: 1.5vw;
@@ -1411,35 +1352,24 @@ h4 {
   margin-bottom: 2vw;
 }
 .home-tournaments-section .toggle-button {
-  width: 2vw;
-  height: 2vw;
-  border-radius: 50%;
-  background-color: #EF283D; /* Red background */
-  color: #fff;
+  background-color: transparent;
   border: none;
   cursor: pointer;
-  font-size: 2vw;
   position: relative; /* 부모 요소를 relative로 설정 */
-  margin: 1vw auto; /* Center button horizontally */
   z-index: 10;
-  transition: background-color 0.3s ease;
+  right: -43vw;
+  padding: 1vw;
 }
-.home-tournaments-section .toggle-button:hover {
-  background-color: #d41025;
+.home-tournaments-section .toggle-button img {
+  position: relative;
+  width: 2vw;
+  height: 2vw;
+  padding-right: 0.2vw;
 }
-.home-tournaments-section .arrow-down, .home-tournaments-section .arrow-up {
-  font-size: 1vw; /* 화살표 크기 */
-  color: white; /* 화살표 색상 */
-  position: absolute; /* 절대 위치 지정 */
-  top: 50%; /* 세로 중앙에 위치 */
-  left: 50%; /* 가로 중앙에 위치 */
-  transform: translate(-50%, -50%); /* 중앙 기준으로 정확하게 위치 고정 */
-  transition: transform 0.3s ease, color 0.3s ease;
+.home-tournaments-section #upcomingToggleDownButton {
+  display: block; /* Initially hidden */
 }
-.home-tournaments-section #toggleUpButton {
-  display: none; /* Initially hidden */
-}
-.home-tournaments-section #toggleDownButton {
+.home-tournaments-section #previousToggleDownButton {
   display: block; /* Initially visible */
 }
 
@@ -1577,9 +1507,10 @@ h4 {
   padding: 0; /* Remove padding */
   margin: 0; /* Remove margin to eliminate the gap */
   display: block;
+  object-fit: cover; /* 이미지가 찌그러지지 않고 자르도록 설정 */
 }
 .news-section .news-card h3 {
-  font-size: 1.3vw;
+  font-size: 1.5vw;
   margin: 0;
   padding: 1vw;
   padding-bottom: 0;
@@ -1589,6 +1520,8 @@ h4 {
 }
 .news-section .news-card p {
   font-size: 1vw;
+  padding-top: 0;
+  margin-top: 0;
   padding: 1vw;
   text-align: left;
   color: #010101; /* 기본 링크 색상을 검정으로 설정 */
@@ -1620,23 +1553,25 @@ h4 {
   color: #010101; /* 클릭 시에도 검정색 유지 */
   text-decoration: none;
 }
-.news-section .prev-btn, .news-section .next-btn {
+.news-section .prevB, .news-section .nextB {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background-color: #EF283D;
-  color: #FFFFFF;
   border: none;
-  padding: 1vw;
-  font-size: 2vw;
+  background-color: transparent;
   cursor: pointer;
   z-index: 2;
-  border-radius: 50%;
 }
-.news-section .prev-btn {
+.news-section .prevB img, .news-section .nextB img {
+  position: relative;
+  width: 2vw;
+  height: 2vw;
+  padding-right: 0.2vw;
+}
+.news-section .prevB {
   left: -4vw;
 }
-.news-section .next-btn {
+.news-section .nextB {
   right: -4vw;
 }
 
@@ -1791,8 +1726,24 @@ h4 {
     margin-top: 2vh;
   }
 }
+@font-face {
+  font-family: "AppleSDGothicNeo";
+  src: url("../assets/fonts/AppleSDGothicNeo.ttc") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
 .special-char {
   font-family: "Bebas Neue", sans-serif;
+}
+
+.special-char-thin {
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 100;
+}
+
+.special-char-lighter {
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
 }
 
 .special-char-bold {
@@ -1811,6 +1762,14 @@ h4 {
 
 .dash-symbol {
   font-family: "Bebas Neue", sans-serif;
+}
+
+.at-symbol-apple {
+  font-family: "AppleSDGothicNeo", sans-serif;
+}
+
+.dash-symbol-apple {
+  font-family: "AppleSDGothicNeo", sans-serif;
 }
 
 /*

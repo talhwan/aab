@@ -27,17 +27,17 @@
 
   .home-section-title {
     text-align: center;
-    font-size: 2vw;
+    font-size: 3vw;
     color: $primary-black;
     margin-bottom: 2vw;
     background-color: $primary-black;
     color: $primary-white;
-    padding: 1vw;
+    padding: 0.5vw;
     text-transform: uppercase;
   }
 
   .tournament-list-container {
-    max-height: 35vw;
+    max-height: 40vw;
     overflow-y: scroll; /* Enable vertical scroll */
     scroll-behavior: smooth;
   }
@@ -50,9 +50,9 @@
 
   .home-tournament-coming-soon {
     background-color: $primary-lightbeige;
-    padding: 5vw;
+    padding: 2vw;
     text-align: center;
-    font-size: 1.8vw;
+    font-size: 4.5vw;
     color: $primary-grey;
     margin-bottom: 1vw;
   }
@@ -62,7 +62,7 @@
     display: flex;
     align-items: center;
     background-color: $primary-white;
-    padding: 1vw;
+    padding: 1.5vw;
     margin-bottom: 1vw;
     box-shadow: 0 0.5vw 1vw rgba(0, 0, 0, 0.1);
     position: relative;
@@ -75,7 +75,7 @@
       top: 0;
       bottom: 0;
       left: 0;
-      width: 25.5vw;
+      width: 28vw;
       height: 100%;
       clip-path: polygon(0 0, 91% 0, 100% 100%, 0 100%);
       z-index: 0;
@@ -99,18 +99,19 @@
 
     .home-tournament-details {
       z-index: 1;
-      margin-left: 2.5vw;
+      margin-left: 6vw;
 
       h3 {
         font-size: 2.2vw;
         margin-bottom: 0;
+        padding: 0;
       }
 
       .home-tournament-name {
         font-size: 4vw;
         color: $primary-red;
         font-weight: bold;
-        margin-bottom: 0;
+        margin: 0;
       }
 
       .home-tournament-location {
@@ -123,40 +124,28 @@
   }
 
   .toggle-button {
-    width: 2vw;
-    height: 2vw;
-    border-radius: 50%;
-    background-color: $primary-red; /* Red background */
-    color: #fff;
+    background-color: transparent;
     border: none;
     cursor: pointer;
-    font-size: 2vw;
     position: relative; /* 부모 요소를 relative로 설정 */
-    margin: 1vw auto; /* Center button horizontally */
     z-index: 10;
-    transition: background-color 0.3s ease;
+    right: -43vw;
+    padding: 1vw;
 
-    &:hover {
-        background-color: darken($primary-red, 10%);
+    img{
+      position: relative;
+      width: 2vw;
+      height: 2vw;
+      padding-right: 0.2vw;
     }
   }
 
-  .arrow-down, .arrow-up {
-      font-size: 1vw; /* 화살표 크기 */
-      color: white; /* 화살표 색상 */
-      position: absolute; /* 절대 위치 지정 */
-      top: 50%; /* 세로 중앙에 위치 */
-      left: 50%; /* 가로 중앙에 위치 */
-      transform: translate(-50%, -50%); /* 중앙 기준으로 정확하게 위치 고정 */
-      transition: transform 0.3s ease, color 0.3s ease;
-  }
-
   /* 위/아래 버튼 초기 상태 */
-  #toggleUpButton {
-      display: none; /* Initially hidden */
+  #upcomingToggleDownButton {
+      display: block; /* Initially hidden */
   }
 
-  #toggleDownButton {
+  #previousToggleDownButton {
       display: block; /* Initially visible */
   }
 
@@ -308,10 +297,11 @@
     padding: 0; /* Remove padding */
     margin: 0; /* Remove margin to eliminate the gap */
     display: block;
+    object-fit: cover; /* 이미지가 찌그러지지 않고 자르도록 설정 */
   }
     
   .news-card h3 {
-    font-size: 1.3vw;
+    font-size: 1.5vw;
     margin: 0;
     padding: 1vw;
     padding-bottom: 0;
@@ -322,6 +312,8 @@
     
   .news-card p {
     font-size: 1vw;
+    padding-top: 0;
+    margin-top: 0;
     padding: 1vw;
     text-align: left;
     color: $primary-black; /* 기본 링크 색상을 검정으로 설정 */
@@ -360,27 +352,31 @@
     text-decoration: none;
   }
 
-  .prev-btn, .next-btn {
+  .prevB, .nextB {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background-color: $primary-red;
-    color: #FFFFFF;
     border: none;
-    padding: 1vw;
-    font-size: 2vw;
+    background-color: transparent;
     cursor: pointer;
     z-index: 2;
-    border-radius: 50%;
+    
+    img{
+      position: relative;
+      width: 2vw;
+      height: 2vw;
+      padding-right: 0.2vw;
+    }
   }
-  
-  .prev-btn {
+
+  .prevB {
     left: -4vw;
   }
-  
-  .next-btn {
+
+  .nextB {
     right: -4vw;
   }
+
   
 }
 

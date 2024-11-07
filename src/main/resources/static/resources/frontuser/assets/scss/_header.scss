@@ -15,13 +15,6 @@
       height: 4.5vw;
       margin-bottom: 0.1vw;
     }
-
-    .logo-text {
-      color: $primary-red;
-      font-size: 1vw;
-      font-weight: bold;
-      text-align: center;
-    }
   }
 
   .menu-toggle {
@@ -55,6 +48,7 @@
           text-decoration: none;
           position: relative;
           font-size: 1.5vw;
+          font-weight:lighter;
 
           &.active {
             color: $primary-red;

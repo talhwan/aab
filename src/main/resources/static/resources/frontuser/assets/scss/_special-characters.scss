@@ -2,8 +2,26 @@
 // Google Fonts에서 Bebas Neue 폰트 설정
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
+// AppleSDGothicNeo 폰트 설정
+@font-face {
+  font-family: 'AppleSDGothicNeo';
+  src: url('../assets/fonts/AppleSDGothicNeo.ttc') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 .special-char {
   font-family: 'Bebas Neue', sans-serif; // Bebas Neue 폰트 적용
+}
+
+.special-char-thin {
+  font-family: 'Bebas Neue', sans-serif; // Bebas Neue 폰트 적용
+  font-weight:100; // 얇은 문자
+}
+
+.special-char-lighter {
+  font-family: 'Bebas Neue', sans-serif; // Bebas Neue 폰트 적용
+  font-weight:400; // 얇은 문자
 }
 
 .special-char-bold {
@@ -23,6 +41,15 @@
 
 .dash-symbol {
   font-family: 'Bebas Neue', sans-serif;
+}
+
+// AppleSDGothicNeo 폰트로 @나 _ 같은 특수 문자 처리할 경우
+.at-symbol-apple {
+  font-family: 'AppleSDGothicNeo', sans-serif;
+}
+
+.dash-symbol-apple {
+  font-family: 'AppleSDGothicNeo', sans-serif;
 }
 
 /*
